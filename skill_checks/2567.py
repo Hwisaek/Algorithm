@@ -1,7 +1,23 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Sep 26 23:43:39 2020
+def solution(scoville, K):
+    answer = 0
 
-@author: dia_c
-"""
+    for i in range(len(scoville) - 1):
+        if(min(scoville) >= K):
+            break
+        new = 0
 
+        new += min(scoville)
+        scoville.remove(new)
+        
+        new += min(scoville) * 2
+        scoville.remove(min(scoville))
+        
+        scoville.append(new)
+        answer += 1
+        
+    if min(scoville) < K:
+        answer = -1
+    # print(answer)
+    return answer
+
+solution([1, 1, 1, 1, 1], 100)
