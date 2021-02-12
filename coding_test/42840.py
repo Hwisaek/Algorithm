@@ -18,7 +18,3 @@ def solution(answers):
         if max_s == score[i]:
             winner.append(i+1)
     return winner
-
-
-print(solution([1, 2, 3, 4, 5]))
-print(solution([1, 3, 2, 4, 2]))
