@@ -3,7 +3,7 @@ package dataStructure;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class dataQueue {
+public class DataQueue {
 
 	public static void main(String[] args) {
 		// Å¥ »ý¼º
