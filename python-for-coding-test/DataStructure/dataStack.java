@@ -2,7 +2,7 @@ package dataStructure;
 
 import java.util.Stack;
 
-public class dataStack {
+public class DataStack {
 
 	public static void main(String[] args) {
 		Stack<Integer> s = new Stack<>(); // Stack »ý¼º
