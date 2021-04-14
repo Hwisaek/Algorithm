@@ -3,20 +3,20 @@ package dataStructure;
 import java.util.ArrayList;
 
 /**
- * ¸®½ºÆ® ¹æ½ÄÀº Çà·Ä ¹æ½Äº¸´Ù ¸Ş¸ğ¸®´Â Àû°Ô ¸ÔÀ¸³ª ¼Óµµ°¡ ´À¸².
+ * ë¦¬ìŠ¤íŠ¸ ë°©ì‹ì€ í–‰ë ¬ ë°©ì‹ë³´ë‹¤ ë©”ëª¨ë¦¬ëŠ” ì ê²Œ ë¨¹ìœ¼ë‚˜ ì†ë„ê°€ ëŠë¦¼.
  * 
- * ÀÚ½Å°ú ¿¬°áµÈ ³ëµåÀÇ Á¤º¸¸¸ °¡Áö°í ÀÖÀ¸¹Ç·Î ¸ğµç ÀÎÁ¢ ³ëµå¸¦ ¼øÈ¸ÇØ¾ß ÇÏ´Â °æ¿ì Çà·Ä ¹æ½Äº¸´Ù ¸Ş¸ğ¸®¸¦ ´ú »ç¿ëÇÔ.
+ * ìì‹ ê³¼ ì—°ê²°ëœ ë…¸ë“œì˜ ì •ë³´ë§Œ ê°€ì§€ê³  ìˆìœ¼ë¯€ë¡œ ëª¨ë“  ì¸ì ‘ ë…¸ë“œë¥¼ ìˆœíšŒí•´ì•¼ í•˜ëŠ” ê²½ìš° í–‰ë ¬ ë°©ì‹ë³´ë‹¤ ë©”ëª¨ë¦¬ë¥¼ ëœ ì‚¬ìš©í•¨.
  * 
  * @author Hwisaek
  *
  */
 
-class Node { // ³ëµå Å¬·¡½º
+class Node { // ë…¸ë“œ í´ë˜ìŠ¤
 
 	private int index;
 	private int distance;
 
-	public Node(int index, int distance) { // »ı¼ºÀÚ
+	public Node(int index, int distance) { // ìƒì„±ì
 		this.index = index;
 		this.distance = distance;
 	}
@@ -28,22 +28,22 @@ class Node { // ³ëµå Å¬·¡½º
 
 public class DataGraph_List {
 
-	// ArrayList<Node>¸¦ µ¥ÀÌÅÍ·Î °¡Áö´Â ArrayList »ı¼º
-	// ArrayList ³»ºÎÀÇ ArrayList ´Â Node·Î ÀÌ·ç¾îÁ®ÀÖÀ½.
-	// °¢ ³ëµå¿¡´Â ¿¬°áµÈ ³ëµå¿ÍÀÇ ºñ¿ëÀÌ ÀúÀåµÇ¾î ÀÖÀ½.
+	// ArrayList<Node>ë¥¼ ë°ì´í„°ë¡œ ê°€ì§€ëŠ” ArrayList ìƒì„±
+	// ArrayList ë‚´ë¶€ì˜ ArrayList ëŠ” Nodeë¡œ ì´ë£¨ì–´ì ¸ìˆìŒ.
+	// ê° ë…¸ë“œì—ëŠ” ì—°ê²°ëœ ë…¸ë“œì™€ì˜ ë¹„ìš©ì´ ì €ì¥ë˜ì–´ ìˆìŒ.
 	public static ArrayList<ArrayList<Node>> graph = new ArrayList<ArrayList<Node>>();
 
 	public static void main(String[] args) {
 		for (int i = 0; i < 3; i++) {
-			graph.add(new ArrayList<Node>()); // ±×·¡ÇÁ¿¡ ³ëµå 1, 2, 3 Ãß°¡
+			graph.add(new ArrayList<Node>()); // ê·¸ë˜í”„ì— ë…¸ë“œ 1, 2, 3 ì¶”ê°€
 		}
 
-		graph.get(0).add(new Node(1, 7)); // ³ëµå 0 ¿¡ ºñ¿ë 7ÀÇ ³ëµå 1 Ãß°¡
-		graph.get(0).add(new Node(2, 5)); // ³ëµå 0 ¿¡ ºñ¿ë 5ÀÇ ³ëµå 2 Ãß°¡
+		graph.get(0).add(new Node(1, 7)); // ë…¸ë“œ 0 ì— ë¹„ìš© 7ì˜ ë…¸ë“œ 1 ì¶”ê°€
+		graph.get(0).add(new Node(2, 5)); // ë…¸ë“œ 0 ì— ë¹„ìš© 5ì˜ ë…¸ë“œ 2 ì¶”ê°€
 
-		graph.get(1).add(new Node(0, 7)); // ³ëµå 1 ¿¡ ºñ¿ë 7ÀÇ ³ëµå 0 Ãß°¡
+		graph.get(1).add(new Node(0, 7)); // ë…¸ë“œ 1 ì— ë¹„ìš© 7ì˜ ë…¸ë“œ 0 ì¶”ê°€
 
-		graph.get(2).add(new Node(0, 5)); // ³ëµå 2 ¿¡ ºñ¿ë 5ÀÇ ³ëµå 0 Ãß°¡
+		graph.get(2).add(new Node(0, 5)); // ë…¸ë“œ 2 ì— ë¹„ìš© 5ì˜ ë…¸ë“œ 0 ì¶”ê°€
 
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < graph.get(i).size(); j++) {

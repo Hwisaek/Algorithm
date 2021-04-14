@@ -1,13 +1,13 @@
-package Greedy;
+package greedy;
 
 import java.util.Scanner;
 
-public class °Å½º¸§µ· {
+public class ê±°ìŠ¤ë¦„ëˆ {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 
-		System.out.printf("°Å½º¸§µ·À» ÀÔ·ÂÇØÁÖ¼¼¿ä>> ");
+		System.out.printf("ê±°ìŠ¤ë¦„ëˆì„ ì…ë ¥í•´ì£¼ì„¸ìš”>> ");
 		int n = scan.nextInt();
 
 		int[] coins = { 500, 100, 50, 10 };
@@ -17,7 +17,7 @@ public class °Å½º¸§µ· {
 			cnt += n / coin;
 			n = n % coin;
 		}
-		System.out.println("°Å½½·¯Áà¾ß ÇÒ µ¿ÀüÀÇ ÃÖ¼ö °³¼ö: " + cnt);
+		System.out.println("ê±°ìŠ¬ëŸ¬ì¤˜ì•¼ í•  ë™ì „ì˜ ìµœìˆ˜ ê°œìˆ˜: " + cnt);
 	}
 
 }

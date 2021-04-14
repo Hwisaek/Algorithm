@@ -1,12 +1,12 @@
-package Greedy;
+package greedy;
 
 import java.util.Scanner;
 
-public class NÀÌ_1ÀÌ_µÉ_¶§±îÁö {
+public class Nì´_1ì´_ë _ë•Œê¹Œì§€ {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.printf("N, K¸¦ ÀÔ·ÂÇÏ¼¼¿ä>> ");
+		System.out.printf("N, Kë¥¼ ì…ë ¥í•˜ì„¸ìš”>> ");
 
 		int n = sc.nextInt();
 		int k = sc.nextInt();
@@ -21,7 +21,7 @@ public class NÀÌ_1ÀÌ_µÉ_¶§±îÁö {
 			cnt++;
 		}
 
-		System.out.println("NÀ» 1·Î ¸¸µå´Â ÃÖ¼Ò È½¼ö: " + cnt);
+		System.out.println("Nì„ 1ë¡œ ë§Œë“œëŠ” ìµœì†Œ íšŸìˆ˜: " + cnt);
 	}
 
 }

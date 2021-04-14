@@ -1,25 +1,25 @@
-package Greedy;
+package greedy;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Å«_¼öÀÇ_¹ýÄ¢ {
+public class í°_ìˆ˜ì˜_ë²•ì¹™ {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 
-		System.out.printf("N, M, K¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä>> ");
+		System.out.printf("N, M, Kë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”>> ");
 		int n = scan.nextInt();
 		int m = scan.nextInt();
 		int k = scan.nextInt();
 
 		int[] arr = new int[n];
-		System.out.printf("N°³ÀÇ ÀÚ¿¬¼ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä>> ");
+		System.out.printf("Nê°œì˜ ìžì—°ìˆ˜ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”>> ");
 		for (int i = 0; i < n; i++) {
 			arr[i] = scan.nextInt();
 		}
 
-		// Á¤·Ä
+		// ì •ë ¬
 		Arrays.sort(arr);
 		int first = arr[n - 1];
 		int second = arr[n - 2];
@@ -29,7 +29,7 @@ public class Å«_¼öÀÇ_¹ýÄ¢ {
 		int result = 0;
 		result += rpt * m / (k + 1);
 		result += first * m % (k + 1);
-		System.out.println("Å« ¼öÀÇ ¹ýÄ¢¿¡ µû¸¥ °á°ú: " + result);
+		System.out.println("í° ìˆ˜ì˜ ë²•ì¹™ì— ë”°ë¥¸ ê²°ê³¼: " + result);
 	}
 
 }

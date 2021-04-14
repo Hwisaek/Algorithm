@@ -2,7 +2,7 @@ package level2;
 
 import java.util.Arrays;
 
-public class ½ºÅ³Æ®¸® {
+public class ìŠ¤í‚¬íŠ¸ë¦¬ {
 
 	public static void main(String[] args) {
 //		new Solution().solution("CBD", new String[] { "BACDE", "CBADF", "AECB", "BDA" });
@@ -19,15 +19,15 @@ class Solution {
 
 		int[] order = new int[skill.length()];
 
-		for (String skill_tree : skill_trees) { // ¸ğµç ½ºÅ³Æ®¸® ¹İº¹
+		for (String skill_tree : skill_trees) { // ëª¨ë“  ìŠ¤í‚¬íŠ¸ë¦¬ ë°˜ë³µ
 			Arrays.fill(order, 26);
 			for (int i = 0; i < skill.length(); i++) {
 				order[i] = skill_tree.indexOf(skill.charAt(i));
 				if (order[i] == -1) {
 					order[i] = 26;
 				}
-				if (i > 0) { // 1¹øÂ° ÀÎµ¦½ººÎÅÍ
-					if (order[i] < order[i - 1]) { // ½ºÅ³Æ®¸® ¼ø¼­°¡ ²¿ÀÌ¸é
+				if (i > 0) { // 1ë²ˆì§¸ ì¸ë±ìŠ¤ë¶€í„°
+					if (order[i] < order[i - 1]) { // ìŠ¤í‚¬íŠ¸ë¦¬ ìˆœì„œê°€ ê¼¬ì´ë©´
 						break;
 					}
 				}

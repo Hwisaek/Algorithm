@@ -2,7 +2,7 @@ package implementation;
 
 import java.util.Scanner;
 
-public class ½Ã°¢ {
+public class ì‹œê° {
 
 	public static boolean check(int h, int m, int s) {
 		if (h % 10 == 3 || m / 10 == 3 || m % 10 == 3 || s / 10 == 3 || s % 10 == 3)
@@ -13,7 +13,7 @@ public class ½Ã°¢ {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.printf("Á¤¼ö NÀ» ÀÔ·ÂÇÏ¼¼¿ä>> ");
+		System.out.printf("ì •ìˆ˜ Nì„ ì…ë ¥í•˜ì„¸ìš”>> ");
 		int n = sc.nextInt();
 
 		int result = 0;
@@ -26,7 +26,7 @@ public class ½Ã°¢ {
 			}
 		}
 
-		System.out.println("3ÀÌ Æ÷ÇÔµÈ ½Ã°£ÀÇ ¼ö: " + result);
+		System.out.println("3ì´ í¬í•¨ëœ ì‹œê°„ì˜ ìˆ˜: " + result);
 
 	}
 

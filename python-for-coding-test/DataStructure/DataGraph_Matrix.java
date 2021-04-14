@@ -1,15 +1,15 @@
 package dataStructure;
 
 /**
- * Çà·Ä ¹æ½ÄÀº ¸®½ºÆ® ¹æ½Äº¸´Ù ¸Ş¸ğ¸®´Â ¸¹ÀÌ ¸ÔÀ¸³ª ¼Óµµ°¡ ºü¸§.
+ * í–‰ë ¬ ë°©ì‹ì€ ë¦¬ìŠ¤íŠ¸ ë°©ì‹ë³´ë‹¤ ë©”ëª¨ë¦¬ëŠ” ë§ì´ ë¨¹ìœ¼ë‚˜ ì†ë„ê°€ ë¹ ë¦„.
  * @author Hwisaek
  *
  */
 public class DataGraph_Matrix {
 	
-	public static final int INF = 999999999; // ¹«ÇÑÀÇ ºñ¿ë ¼±¾ğ
+	public static final int INF = 999999999; // ë¬´í•œì˜ ë¹„ìš© ì„ ì–¸
 
-	// ±×·¡ÇÁ(Æ®¸®) »ı¼º
+	// ê·¸ë˜í”„(íŠ¸ë¦¬) ìƒì„±
 	public static int[][] graph = { 
 			{ 0,	7,		5 }, 
 			{ 7,	0,		INF }, 

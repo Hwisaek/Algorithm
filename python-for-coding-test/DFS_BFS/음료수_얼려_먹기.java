@@ -3,7 +3,7 @@ package DFS_BFS;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class À½·á¼ö_¾ó·Á_¸Ô±â {
+public class ìŒë£Œìˆ˜_ì–¼ë ¤_ë¨¹ê¸° {
 
 	public static int[][] graph = new int[1000][1000];
 	public static int result = 0;
@@ -25,11 +25,11 @@ public class À½·á¼ö_¾ó·Á_¸Ô±â {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.printf("¼¼·Î ±æÀÌ N°ú °¡·Î ±æÀÌ MÀ» ÀÔ·ÂÇÏ¼¼¿ä>> ");
+		System.out.printf("ì„¸ë¡œ ê¸¸ì´ Nê³¼ ê°€ë¡œ ê¸¸ì´ Mì„ ìž…ë ¥í•˜ì„¸ìš”>> ");
 		int n = sc.nextInt(), m = sc.nextInt();
 		sc.nextLine();
 		
-		System.out.println("¾óÀ½ Æ²ÀÇ ÇüÅÂ¸¦ ÀÔ·ÂÇÏ¼¼¿ä>> ");
+		System.out.println("ì–¼ìŒ í‹€ì˜ í˜•íƒœë¥¼ ìž…ë ¥í•˜ì„¸ìš”>> ");
 		for (int i = 0; i < n; i++) {
 			String str = sc.nextLine();
 			for (int j = 0; j < m; j++) {
@@ -45,7 +45,7 @@ public class À½·á¼ö_¾ó·Á_¸Ô±â {
 			}
 		}
 
-		System.out.println("¸¸µé ¼ö ÀÖ´Â ¾ÆÀÌ½ºÅ©¸²ÀÇ °³¼ö: " + result);
+		System.out.println("ë§Œë“¤ ìˆ˜ ìžˆëŠ” ì•„ì´ìŠ¤í¬ë¦¼ì˜ ê°œìˆ˜: " + result);
 	}
 
 }

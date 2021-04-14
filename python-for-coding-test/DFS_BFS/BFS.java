@@ -10,17 +10,17 @@ public class BFS {
 	public static void bfs(int start) {
 		Queue<Integer> q = new LinkedList<>();
 		q.offer(start);
-		visited[start] = true; // ½ÃÀÛÁ¡ ¹æ¹®
+		visited[start] = true; // ì‹œì‘ì  ë°©ë¬¸
 
-		while (!q.isEmpty()) { // Queue°¡ ºô ¶§±îÁö ¹İº¹
-			int x = q.poll(); // Å¥ÀÇ ¸Ç ¾Õ Á¦°Å ÈÄ ÀúÀå
+		while (!q.isEmpty()) { // Queueê°€ ë¹Œ ë•Œê¹Œì§€ ë°˜ë³µ
+			int x = q.poll(); // íì˜ ë§¨ ì• ì œê±° í›„ ì €ì¥
 			System.out.print(x + " ");
-			for (int i = 0; i < graph.get(x).size(); i++) { // x¿Í ¿¬°áµÈ ³ëµåµé Å½»ö
+			for (int i = 0; i < graph.get(x).size(); i++) { // xì™€ ì—°ê²°ëœ ë…¸ë“œë“¤ íƒìƒ‰
 				int y = graph.get(x).get(i);
-				if (!visited[y]) { // ¹æ¹®ÇÏÁö ¾ÊÀº ³ëµåÀÌ¸é
-					q.offer(y); // Å¥¿¡ ÇØ´ç ³ëµå¸¦ »ğÀÔ
-					visited[y] = true; // ¹æ¹® Ç¥½Ã 
-				} // x¿Í ¿¬°áµÈ ³ëµåµé ¹æ¹® ÈÄ ´ÙÀ½ ³ëµå·Î ³Ñ¾î°¨
+				if (!visited[y]) { // ë°©ë¬¸í•˜ì§€ ì•Šì€ ë…¸ë“œì´ë©´
+					q.offer(y); // íì— í•´ë‹¹ ë…¸ë“œë¥¼ ì‚½ì…
+					visited[y] = true; // ë°©ë¬¸ í‘œì‹œ 
+				} // xì™€ ì—°ê²°ëœ ë…¸ë“œë“¤ ë°©ë¬¸ í›„ ë‹¤ìŒ ë…¸ë“œë¡œ ë„˜ì–´ê°
 			}
 		}
 	}

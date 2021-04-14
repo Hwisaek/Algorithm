@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class ¼øÀ§_°Ë»ö {
+public class ìˆœìœ„_ê²€ìƒ‰ {
 
 	public static void main(String[] args) {
 		String[] info = { "java backend junior pizza 150", "python frontend senior chicken 210",
@@ -24,8 +24,8 @@ public class ¼øÀ§_°Ë»ö {
 			HashMap<String, Integer> language = new HashMap<String, Integer>();
 			language.put("-", 0);
 			language.put("cpp", 1);
-			language.put("java", 1);
-			language.put("python", 1);
+			language.put("java", 2);
+			language.put("python", 3);
 			HashMap<String, Integer> position = new HashMap<String, Integer>();
 			position.put("-", 0);
 			position.put("backend", 1);
@@ -68,22 +68,22 @@ public class ¼øÀ§_°Ë»ö {
 				}
 				query_arr[i][4] = Integer.parseInt(arr[7]);
 			}
-			// ¾ğ¾î Á÷±º °æ·Â ¼Ò¿ïÇªµå Á¡¼ö
+			// ì–¸ì–´ ì§êµ° ê²½ë ¥ ì†Œìš¸í‘¸ë“œ ì ìˆ˜
 			// -, cpp, java, python
 			// -, backend, frontend
 			// -, junior, senior
 			// -, chicken, pizza
 
-			// 1. °¢ Äõ¸®¸¦ °¡Á®¿È
+			// 1. ê° ì¿¼ë¦¬ë¥¼ ê°€ì ¸ì˜´
 			for (int i = 0; i < query_size; i++) {
-				// 2. ÄÚÅ× Á¡¼ö ºñ±³ÇØ¼­ ÇØ´çÇÏ´Â »ç¶÷¸¸ list¿¡ ³ÖÀ½
+				// 2. ì½”í…Œ ì ìˆ˜ ë¹„êµí•´ì„œ í•´ë‹¹í•˜ëŠ” ì‚¬ëŒë§Œ listì— ë„£ìŒ
 				for (int j = 0; j < info_size; j++) {
 					if (info_arr[j][4] >= query_arr[i][4]) {
 						list.add(j);
 					}
 				}
 
-				// 3. list¿¡ ÀÖ´Â »ç¶÷µéÇÑÅ× ³ª¸ÓÁö °Ë»öÁ¶°Ç ¼³Á¤
+				// 3. listì— ìˆëŠ” ì‚¬ëŒë“¤í•œí…Œ ë‚˜ë¨¸ì§€ ê²€ìƒ‰ì¡°ê±´ ì„¤ì •
 				Iterator<Integer> iter = list.iterator();
 				while (iter.hasNext()) {
 					int j = iter.next();

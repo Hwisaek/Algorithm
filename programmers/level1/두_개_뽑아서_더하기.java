@@ -3,7 +3,7 @@ package level1;
 import java.util.Arrays;
 import java.util.HashSet;
 
-public class µÎ_°³_»Ì¾Æ¼­_´õÇÏ±â {
+public class ë‘_ê°œ_ë½‘ì•„ì„œ_ë”í•˜ê¸° {
 
 	static class Solution {
 		public static int[] solution(int[] numbers) {

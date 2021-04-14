@@ -1,14 +1,14 @@
-package Greedy;
+package greedy;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class ¼ıÀÚ_Ä«µå_°ÔÀÓ {
+public class ìˆ«ì_ì¹´ë“œ_ê²Œì„ {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 
-		System.out.printf("N, M ÀÔ·Â>> ");
+		System.out.printf("N, M ì…ë ¥>> ");
 		int n = scan.nextInt();
 		int m = scan.nextInt();
 
@@ -23,7 +23,7 @@ public class ¼ıÀÚ_Ä«µå_°ÔÀÓ {
 				max = arr[i][0];
 		}
 
-		System.out.println("°¢ ÇàÀÇ ÃÖ¼Ò°ªÁß ÃÖ´ë°ª: " + max);
+		System.out.println("ê° í–‰ì˜ ìµœì†Œê°’ì¤‘ ìµœëŒ€ê°’: " + max);
 	}
 
 }

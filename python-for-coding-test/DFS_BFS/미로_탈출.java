@@ -23,18 +23,18 @@ class Node {
 	}
 }
 
-public class ¹Ì·Î_Å»Ãâ {
+public class ë¯¸ë¡œ_íƒˆì¶œ {
 
-	public static int x, y; // ÇöÀç ÁÂÇ¥
-	public static int n, m;// ¹Ì·ÎÀÇ ¼¼·Î,°¡·Î
+	public static int x, y; // í˜„ì¬ ì¢Œí‘œ
+	public static int n, m;// ë¯¸ë¡œì˜ ì„¸ë¡œ,ê°€ë¡œ
 
-	public static int[][] graph = new int[200][200]; // ¹Ì·Î Áöµµ »ı¼º
+	public static int[][] graph = new int[200][200]; // ë¯¸ë¡œ ì§€ë„ ìƒì„±
 
 	public static int dx[] = { -1, 1, 0, 0 };
 	public static int dy[] = { 0, 0, -1, 1 };
 
 	public static int bfs(int x, int y) {
-		Queue<Node> q = new LinkedList<>(); // Å¥ »ı¼º
+		Queue<Node> q = new LinkedList<>(); // í ìƒì„±
 		q.offer(new Node(x, y));
 
 		while (!q.isEmpty()) {
@@ -64,12 +64,12 @@ public class ¹Ì·Î_Å»Ãâ {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
-		System.out.printf("¹Ì·ÎÀÇ Å©±â N, MÀ» ÀÔ·ÂÇÏ¼¼¿ä>> ");
+		System.out.printf("ë¯¸ë¡œì˜ í¬ê¸° N, Mì„ ì…ë ¥í•˜ì„¸ìš”>> ");
 		n = sc.nextInt();
 		m = sc.nextInt();
 		sc.nextLine();
 
-		System.out.println("¹Ì·ÎÀÇ Á¤º¸¸¦ ÀÔ·ÂÇÏ¼¼¿ä>> ");
+		System.out.println("ë¯¸ë¡œì˜ ì •ë³´ë¥¼ ì…ë ¥í•˜ì„¸ìš”>> ");
 		for (int i = 0; i < n; i++) {
 			String str = sc.nextLine();
 			for (int j = 0; j < m; j++) {
@@ -77,7 +77,7 @@ public class ¹Ì·Î_Å»Ãâ {
 			}
 		}
 
-		System.out.println("Å»Ãâ±îÁöÀÇ ÃÖ¼Ò ºñ¿ë: " + bfs(0, 0));
+		System.out.println("íƒˆì¶œê¹Œì§€ì˜ ìµœì†Œ ë¹„ìš©: " + bfs(0, 0));
 	}
 
 }

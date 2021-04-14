@@ -1,6 +1,6 @@
 package level1;
 
-public class ¹®ÀÚ¿­_³»_p¿Í_yÀÇ_°³¼ö {
+public class ë¬¸ìì—´_ë‚´_pì™€_yì˜_ê°œìˆ˜ {
 
 	public static void main(String[] args) {
 		System.out.println(new Solution().solution("Pyy"));

@@ -2,12 +2,12 @@ package implementation;
 
 import java.util.Scanner;
 
-public class ¿Õ½ÇÀÇ_³ªÀÌÆ® {
+public class ì™•ì‹¤ì˜_ë‚˜ì´íŠ¸ {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
-		System.out.printf("³ªÀÌÆ®ÀÇ ÁÂÇ¥¸¦ ÀÔ·ÂÇÏ¼¼¿ä>> ");
+		System.out.printf("ë‚˜ì´íŠ¸ì˜ ì¢Œí‘œë¥¼ ì…ë ¥í•˜ì„¸ìš”>> ");
 		String input = sc.nextLine();
 
 		int row = input.charAt(1) - '0';
@@ -28,7 +28,7 @@ public class ¿Õ½ÇÀÇ_³ªÀÌÆ® {
 				result++;
 		}
 
-		System.out.println("³ªÀÌÆ®°¡ ÀÌµ¿ÇÒ ¼ö ÀÖ´Â °æ¿ìÀÇ ¼ö: " + result);
+		System.out.println("ë‚˜ì´íŠ¸ê°€ ì´ë™í•  ìˆ˜ ìˆëŠ” ê²½ìš°ì˜ ìˆ˜: " + result);
 
 	}
 

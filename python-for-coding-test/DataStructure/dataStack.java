@@ -5,24 +5,24 @@ import java.util.Stack;
 public class DataStack {
 
 	public static void main(String[] args) {
-		Stack<Integer> s = new Stack<>(); // Stack »ı¼º
+		Stack<Integer> s = new Stack<>(); // Stack ìƒì„±
 
-		s.push(5);	// »ğÀÔ(5)
-		s.push(2);	// »ğÀÔ(2)
-		s.push(2);	// »ğÀÔ(2)
-		s.push(7);	// »ğÀÔ(7)
-		s.pop();	// »èÁ¦()
-		s.push(1);	// »ğÀÔ(1)
-		s.push(4);	// »ğÀÔ(4)
-		s.pop();	// »èÁ¦()
+		s.push(5);	// ì‚½ì…(5)
+		s.push(2);	// ì‚½ì…(2)
+		s.push(2);	// ì‚½ì…(2)
+		s.push(7);	// ì‚½ì…(7)
+		s.pop();	// ì‚­ì œ()
+		s.push(1);	// ì‚½ì…(1)
+		s.push(4);	// ì‚½ì…(4)
+		s.pop();	// ì‚­ì œ()
 
-		// °á°ú ½ºÅÃ ±¸Á¶ :
+		// ê²°ê³¼ ìŠ¤íƒ êµ¬ì¡° :
 		// 1
 		// 2
 		// 2
 		// 5
-		while (!s.empty()) { // Stack.empty(): ½ºÅÃÀÌ ºñ¾îÀÖ´ÂÁö¸¦ ¹İÈ¯
-			System.out.println(s.peek()); // Stack.peek(): ½ºÅÃÀÇ ¸Ç À§ °ª ¹İÈ¯
+		while (!s.empty()) { // Stack.empty(): ìŠ¤íƒì´ ë¹„ì–´ìˆëŠ”ì§€ë¥¼ ë°˜í™˜
+			System.out.println(s.peek()); // Stack.peek(): ìŠ¤íƒì˜ ë§¨ ìœ„ ê°’ ë°˜í™˜
 			s.pop();
 		}
 	}

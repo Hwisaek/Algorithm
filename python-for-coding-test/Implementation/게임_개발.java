@@ -2,18 +2,18 @@ package implementation;
 
 import java.util.Scanner;
 
-public class °ÔÀÓ_°³¹ß {
+public class ê²Œì„_ê°œë°œ {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
-		System.out.printf("¸ÊÀÇ Å©±â(N*M)À» ÀÔ·ÂÇÏ¼¼¿ä>> ");
+		System.out.printf("ë§µì˜ í¬ê¸°(N*M)ì„ ì…ë ¥í•˜ì„¸ìš”>> ");
 		int n = sc.nextInt(), m = sc.nextInt();
 
-		System.out.printf("Ä³¸¯ÅÍÀÇ ÁÂÇ¥¿Í ¹æÇâ(0: ºÏ, 1: µ¿, 2: ³², 3: ¼­)À» ÀÔ·ÂÇÏ¼¼¿ä>> ");
+		System.out.printf("ìºë¦­í„°ì˜ ì¢Œí‘œì™€ ë°©í–¥(0: ë¶, 1: ë™, 2: ë‚¨, 3: ì„œ)ì„ ì…ë ¥í•˜ì„¸ìš”>> ");
 		int x = sc.nextInt(), y = sc.nextInt(), d = sc.nextInt();
 
-		System.out.println("¸ÊÀÇ Á¤º¸¸¦ ÀÔ·ÂÇÏ¼¼¿ä>> ");
+		System.out.println("ë§µì˜ ì •ë³´ë¥¼ ì…ë ¥í•˜ì„¸ìš”>> ");
 		int[][] map = new int[n][m];
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
@@ -21,10 +21,10 @@ public class °ÔÀÓ_°³¹ß {
 			}
 		}
 
-		int turn = 0; // È¸Àü È½¼ö
-		int result = 0; // ÀÌµ¿ È½¼ö
-		int stop = 0; // ¿òÁ÷ÀÓ ¹öÆ°
-		while (stop == 0) { // Ä³¸¯ÅÍ ÀÌµ¿ ½ÃÀÛ
+		int turn = 0; // íšŒì „ íšŸìˆ˜
+		int result = 0; // ì´ë™ íšŸìˆ˜
+		int stop = 0; // ì›€ì§ì„ ë²„íŠ¼
+		while (stop == 0) { // ìºë¦­í„° ì´ë™ ì‹œì‘
 			if (d > 0)
 				d--;
 			else
@@ -99,7 +99,7 @@ public class °ÔÀÓ_°³¹ß {
 				}
 			}
 		}
-		System.out.println("ÀÌµ¿ È½¼ö: " + result);
+		System.out.println("ì´ë™ íšŸìˆ˜: " + result);
 	}
 
 }

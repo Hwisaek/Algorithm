@@ -6,22 +6,22 @@ import java.util.Queue;
 public class DataQueue {
 
 	public static void main(String[] args) {
-		// Å¥ »ı¼º
+		// í ìƒì„±
 		Queue<Integer> q = new LinkedList();
 		
-        // »ğÀÔ(5) - »ğÀÔ(2) - »ğÀÔ(3) - »ğÀÔ(7) - »èÁ¦() - »ğÀÔ(1) - »ğÀÔ(4) - »èÁ¦()
-		q.offer(5);	// »ğÀÔ(5)
-		q.offer(2); // »ğÀÔ(2)
-		q.offer(3); // »ğÀÔ(3)
-		q.offer(7); // »ğÀÔ(7)
-		q.poll();	// »èÁ¦()
-		q.offer(1);	// »ğÀÔ(1)
-		q.offer(4);	// »ğÀÔ(4)
-		q.poll();	// »èÁ¦()
+        // ì‚½ì…(5) - ì‚½ì…(2) - ì‚½ì…(3) - ì‚½ì…(7) - ì‚­ì œ() - ì‚½ì…(1) - ì‚½ì…(4) - ì‚­ì œ()
+		q.offer(5);	// ì‚½ì…(5)
+		q.offer(2); // ì‚½ì…(2)
+		q.offer(3); // ì‚½ì…(3)
+		q.offer(7); // ì‚½ì…(7)
+		q.poll();	// ì‚­ì œ()
+		q.offer(1);	// ì‚½ì…(1)
+		q.offer(4);	// ì‚½ì…(4)
+		q.poll();	// ì‚­ì œ()
 		
-		// Å¥ ±¸Á¶: 4 - 1 - 7 - 3
+		// í êµ¬ì¡°: 4 - 1 - 7 - 3
 		while(!q.isEmpty()) {
-			System.out.println(q.poll()); // Queue.poll()Àº Å¥ÀÇ ¸Ç ¾Õ ÀÚ·á¸¦ ¹İÈ¯ÇÏ°í »èÁ¦ÇÔ
+			System.out.println(q.poll()); // Queue.poll()ì€ íì˜ ë§¨ ì• ìë£Œë¥¼ ë°˜í™˜í•˜ê³  ì‚­ì œí•¨
 		}
 	}
 

@@ -2,12 +2,12 @@ package implementation;
 
 import java.util.Scanner;
 
-public class »óÇÏÁÂ¿ì {
+public class ìƒí•˜ì¢Œìš° {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
-		System.out.printf("°ø°£ÀÇ Å©±â N ÀÔ·Â>> ");
+		System.out.printf("ê³µê°„ì˜ í¬ê¸° N ìž…ë ¥>> ");
 		int n = sc.nextInt();
 		sc.nextLine();
 		String[] plan = sc.nextLine().split(" ");
