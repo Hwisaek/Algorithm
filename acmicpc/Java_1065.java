@@ -10,11 +10,11 @@ public class Java_1065 {
 
 		boolean[] chk = new boolean[1001];
 
-		int d = 0; // °øÂ÷
+		int d = 0; // ê³µì°¨
 		int result = 0;
 
-		for (int i = 1; i <= n; i++) {// 1ºÎÅÍ 1000±îÁö ¹İº¹
-			if (i <= 99) {// 1~99±îÁö´Â ÇÑ¼öÀÌ¹Ç·Î ³Ñ±è
+		for (int i = 1; i <= n; i++) {// 1ë¶€í„° 1000ê¹Œì§€ ë°˜ë³µ
+			if (i <= 99) {// 1~99ê¹Œì§€ëŠ” í•œìˆ˜ì´ë¯€ë¡œ ë„˜ê¹€
 				chk[i] = true;
 				result++;
 				continue;
@@ -22,7 +22,7 @@ public class Java_1065 {
 			int number = i;
 			d = number / 10 % 10 - number % 10;
 			number = number / 10;
-			while (number >= 10) {// ÇÑÀÚ¸®¼ö°¡ µÉ ¶§ ±îÁö ¹İº¹
+			while (number >= 10) {// í•œìë¦¬ìˆ˜ê°€ ë  ë•Œ ê¹Œì§€ ë°˜ë³µ
 				if (d == number / 10 % 10 - number % 10) {
 					chk[i] = true;
 					number = number / 10;
