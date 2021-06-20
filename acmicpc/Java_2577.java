@@ -1,22 +1,21 @@
-package acmicpc;
-
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Java_2577 {
-
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int a = sc.nextInt(), b = sc.nextInt(), c = sc.nextInt();
-		String num = Integer.toString(a * b * c);
-		int[] cnt = new int[10];
-
-		for (int i = 0; i < num.length(); i++) {
-			cnt[Integer.parseInt(String.valueOf(num.charAt(i)))]++;
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int total = Integer.parseInt(br.readLine()) * Integer.parseInt(br.readLine()) * Integer.parseInt(br.readLine());
+		int[] count = new int[10];
+		while (true) {
+			count[total % 10]++;
+			total /= 10;
+			if (total == 0) {
+				break;
+			}
 		}
-
-		for (int i = 0; i < 10; i++) {
-			System.out.println(cnt[i]);
+		for (int i : count) {
+			System.out.println(i);
 		}
 	}
-
 }
