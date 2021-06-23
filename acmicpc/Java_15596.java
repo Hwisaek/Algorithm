@@ -1,5 +1,3 @@
-package acmicpc;
-
 public class Java_15596 {
 	long sum(int[] a) {
 		long sum = 0;

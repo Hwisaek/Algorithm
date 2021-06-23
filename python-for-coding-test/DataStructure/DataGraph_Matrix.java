@@ -1,4 +1,4 @@
-package dataStructure;
+package DataStructure;
 
 /**
  * 행렬 방식은 리스트 방식보다 메모리는 많이 먹으나 속도가 빠름.
