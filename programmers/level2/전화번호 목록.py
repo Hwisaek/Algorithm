@@ -1,12 +1,14 @@
 def solution(phone_book):
-    dic = {}
-    for i in phone_book:
-        dic[i] = False
+    # List to set
+    dic = {i for i in phone_book}
 
+    # 전화번호 한개씩 꺼냄
     for num in phone_book:
         n = ""
+        # 한글자씩 추가해가며 dic에 있는지 확인
         for i in num[:-1]:
             n += i
+            # dic에 존재하면 False 반환
             if n in dic:
                 return False
 
