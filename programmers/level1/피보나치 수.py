@@ -7,3 +7,4 @@ def solution(n):
 
 # solution(4)
 solution(3)
+solution(100000)
