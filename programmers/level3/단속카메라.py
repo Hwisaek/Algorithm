@@ -8,7 +8,7 @@ def solution(routes):
         if not chk[idx]:  # 카메라를 만나지 않았으면 실행
             cam = route[1]  # 카메라를 해당 차량의 진출지점에 설치
             for i, r in enumerate(routes):
-                if r[0] <= cam <= r[1]:
+                if not chk[i] and r[0] <= cam <= r[1]:
                     chk[i] = True
             answer += 1
     return answer
