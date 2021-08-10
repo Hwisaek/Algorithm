@@ -1,11 +1,19 @@
-coins = [500, 100, 50, 10]
+import time
 
-change = int(input('거스름돈을 입력하세요 >>'))
 
-# 동전개수
-count = 0
-for coin in coins:
-    count += change // coin
-    change %= coin
+def solution(charge):
+    coins = [500, 100, 50, 10]
+    count = [0, 0, 0, 0]
 
-print('동전의 최소 개수: ', count)
+    for i, coin in enumerate(coins):
+        count[i] += charge // coin
+        charge %= coin
+
+    print(f'500원: {count[0]}, 100원: {count[1]}, 50원: {count[2]}, 10원: {count[3]}')
+    return sum(count)
+
+
+start = time.time()
+print(solution(1260))
+end = time.time()
+print('수행시간: ', end - start)
