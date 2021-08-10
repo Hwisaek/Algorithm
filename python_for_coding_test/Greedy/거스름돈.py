@@ -6,7 +6,7 @@ def solution(charge):
     count = [0, 0, 0, 0]
 
     for i, coin in enumerate(coins):
-        count[i] += charge // coin
+        count[i] += charge // coin  # 해당 동전으로 거슬러 줄 수 있는 갯수
         charge %= coin
 
     print(f'500원: {count[0]}, 100원: {count[1]}, 50원: {count[2]}, 10원: {count[3]}')
