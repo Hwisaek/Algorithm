@@ -1,26 +1,21 @@
-# N: 배열의 크기, M: 숫자가 총 더해지는 횟수, K: 연속해서 더할 수 있는 횟수
-N, M, K = map(int, input().split())
+import time
 
-# 더해질 숫자
-number = list(map(int, input().split()))
 
-number.sort()
+def solution():
+    n, m, k = map(int, input().split())  # N: 배열의 크기, M: 숫자가 총 더해지는 횟수, K: 연속해서 더할 수 있는 횟수
+    nums = list(map(int, input().split()))  # 더해질 숫자
 
-first = number[-1]
-second = number[-2]
+    start = time.time()  # 시작시간
+    nums.sort()
 
-print('number = ', number)
-print('first', first, 'second', second)
-a = M // (K + 1)
-b = M % (K + 1)
+    roop = nums[-1] * k + nums[-2]  # 한번의 루프로 가장 큰 값을 만들 수 있는 수
+    i = m // (k + 1)  # roop가 더해질 횟수
+    j = m % (k + 1)  # 가장 큰 수만 더해질 횟수
 
-print('a, b = ', a, b)
+    end = time.time()  # 종료시간
+    print('수행시간: ', end - start)  # 수행시간
 
-c = first * K + second
-result = 0
-for i in range(a):
-    result += c
+    return roop * i + nums[-1] * j
 
-result += first * b
 
-print(result)
+print(solution())
