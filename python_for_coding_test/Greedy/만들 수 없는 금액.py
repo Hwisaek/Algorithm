@@ -20,10 +20,11 @@ def solution(n, arr):  # n: 동전의 개수, arr: 각 동전의 화폐 단위
 
 print(solution(5, [3, 2, 1, 1, 9]))  # 8
 print(solution(3, [3, 5, 7]))  # 1
-print(solution(10, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1])) #64
+print(solution(10, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))  # 64
 print(solution(6, [1, 2, 4, 8, 16, 32]))  # 64
 
 
+# 예시 답안
 def n(n, arr):
     arr.sort()
 
