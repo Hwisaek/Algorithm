@@ -11,7 +11,7 @@ for _ in range(t):
 
         if count < 0:
             break
-    if count < 0 or vps[-1] == "(" or count != 0:
-        print("NO")
-    else:
+    if count == 0:
         print("YES")
+    else:
+        print("NO")
