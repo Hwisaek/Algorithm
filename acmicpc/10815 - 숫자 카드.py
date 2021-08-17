@@ -1,10 +1,17 @@
+import sys
+
+input = sys.stdin.readline
 n = input()
 nlst = set(map(int, input().split()))
 m = input()
 mlst = list(map(int, input().split()))
 
+answer = ""
+
 for i in mlst:
     if i in nlst:
-        print(1, end=" ")
+        answer += "1 "
     else:
-        print(0, end=" ")
+        answer += "0 "
+
+print(answer)
