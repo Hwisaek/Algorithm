@@ -7,9 +7,10 @@ n = int(input())
 students = []
 
 for _ in range(n):
-    students.append(input().split())
+    l = list(input().rstrip().split())
+    students.append((-int(l[1]), int(l[2]), -int(l[3]), l[0]))
 
-students.sort(key=lambda x: (-int(x[1]), int(x[2]), -int(x[3]), x[0]))
+students.sort()
 
-for i in range(n):
-    print(students[i][0])
+for s in students:
+    print(s[3])
