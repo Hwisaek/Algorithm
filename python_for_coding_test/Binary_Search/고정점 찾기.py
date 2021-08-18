@@ -20,4 +20,4 @@ while start <= end:
     else:
         end = mid - 1
 
-print(idx if idx > 0 else -1)
+print(idx)
