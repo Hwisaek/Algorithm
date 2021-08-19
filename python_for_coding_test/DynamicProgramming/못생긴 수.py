@@ -1,11 +1,11 @@
 n = int(input())
 
-prime = [False] * 1001
+prime = [False] * 5001
 prime[0] = False
 prime[1] = True
 
 for i in [2, 3, 5]:
-    for j in range(i, 1001, i):
+    for j in range(i, 5001, i):
         prime[j] = True
 
 idx = 0
