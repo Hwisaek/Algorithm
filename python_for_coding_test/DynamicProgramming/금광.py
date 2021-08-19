@@ -8,18 +8,17 @@ def solution(T, arr):  # T: 테스트케이스의 수
             for j in range(size[1]):
                 gold[i].append(array[i * size[1] + j])
 
-        answer = gold.copy()
         for j in range(1, size[1]):
             for i in range(size[0]):
                 total = []
                 if i > 0:
-                    total.append(gold[i][j] + answer[i - 1][j - 1])
-                total.append(gold[i][j] + answer[i][j - 1])
+                    total.append(gold[i][j] + gold[i - 1][j - 1])
+                total.append(gold[i][j] + gold[i][j - 1])
                 if i + 1 <= size[0] - 1:
-                    total.append(gold[i][j] + answer[i + 1][j - 1])
-                answer[i][j] = max(total)
+                    total.append(gold[i][j] + gold[i + 1][j - 1])
+                gold[i][j] = max(total)
 
-        print(max([answer[i][size[1] - 1] for i in range(size[0])]))
+        print(max([gold[i][size[1] - 1] for i in range(size[0])]))
 
 
 solution(2,
