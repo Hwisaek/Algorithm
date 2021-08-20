@@ -17,11 +17,14 @@ for _ in range(m):
     graph[a][b] = 1
     graph[b][a] = 1
 
-x, k = map(int, input().split())
-
 for k in range(1, n + 1):
     for a in range(1, n + 1):
         for b in range(1, n + 1):
             graph[a][b] = min(graph[a][b], graph[a][k] + graph[k][b])
 
-print(graph[1][k]+graph[k][x])
+x, k = map(int, input().split())
+
+if graph[1][k] == INF or graph[k][x] == INF:
+    print(-1)
+else:
+    print(graph[1][k] + graph[k][x])
