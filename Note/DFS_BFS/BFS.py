@@ -1,3 +1,6 @@
+# 시간 복잡도
+# 인접 행렬: O(V^2)
+# 인접 리스트: O(V)
 from collections import deque
 
 
