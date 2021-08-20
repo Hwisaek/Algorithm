@@ -19,12 +19,16 @@ for k in range(1, n + 1):
         for b in range(1, n + 1):
             graph[a][b] = min(graph[a][b], graph[a][k] + graph[k][b])
 
-result = 0
-for i in range(1, n + 1):
-    count = 0
-    for j in range(n + 1):
-        if graph[i][j] != INF or graph[j][i] != INF:
-            count += 1
-    if count == n:
-        result += 1
-print(result)
+answer = defaultdict(int)
+for a in range(1, n + 1):
+    for b in range(1, n + 1):
+        if graph[a][b] != INF:
+            answer[graph[a][b]] += 1
+
+count = 0
+for v in answer.values():
+    if v == 1:
+        count += 1
+
+print(count)
+print(answer)
