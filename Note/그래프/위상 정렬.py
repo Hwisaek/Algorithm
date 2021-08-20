@@ -11,7 +11,9 @@
 #   2. 새롭게 진입차수가 0이 된 노드를 큐에 넣는다.
 
 from collections import deque
+import sys
 
+input = sys.stdin.readline
 # 노드의 개수와 간선의 개수를 입력 받기
 v, e = map(int, input().split())
 # 모든 노드에 대한 진입차수는 0으로 초기화

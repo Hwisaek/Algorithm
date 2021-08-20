@@ -5,6 +5,11 @@
 
 # 부모 노드가 연결된 순서를 확인 가능
 
+import sys
+
+input = sys.stdin.readline
+
+
 # 특정 원소가 속한 집합을 찾기
 # x의 루트 노드를 찾아서 반환
 def find_parent(parent, x):
