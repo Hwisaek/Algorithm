@@ -11,6 +11,11 @@
 #   II. 사이클이 발생하는 경우 최소 신장 트리에 포함시키지 않는다.
 # 3. 모든 간선에 대하여 2번의 과정을 반복
 
+import sys
+
+input = sys.stdin.readline
+
+
 # 특정 원소가 속한 집합을 찾기
 def find_parent(parent, x):
     # 루트 노드가 아니라면, 루트 노드를 찾을 때까지 재귀적으로 호출
