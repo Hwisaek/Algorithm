@@ -1,3 +1,6 @@
+# 개선된 다익스트라 알고리즘 - 최단경로
+# 시간 복잡도: O(Elog V)
+# E: 간선의 개수, V: 노드의 개수
 import heapq
 import sys
 
