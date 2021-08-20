@@ -15,19 +15,13 @@ for a in range(1, n + 1):
 for _ in range(m):
     a, b = map(int, input().rstrip().split())
     graph[a][b] = 1
+    graph[b][a] = 1
+
+x, k = map(int, input().split())
 
 for k in range(1, n + 1):
     for a in range(1, n + 1):
         for b in range(1, n + 1):
             graph[a][b] = min(graph[a][b], graph[a][k] + graph[k][b])
 
-answer = ""
-for a in range(1, n + 1):
-    for b in range(1, n + 1):
-        if graph[a][b] == INF:
-            answer += "0 "
-        else:
-            answer += f"{graph[a][b]} "
-    answer += "\n"
-
-print(answer)
+print(graph[1][k]+graph[k][x])
