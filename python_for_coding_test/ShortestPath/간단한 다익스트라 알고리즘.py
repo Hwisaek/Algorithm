@@ -1,3 +1,6 @@
+# 간단한 다익스트라 알고리즘 - 최단경로
+# 시간 복잡도: O(N^2)
+# N: 노드의 개수
 import sys
 
 input = sys.stdin.readline
