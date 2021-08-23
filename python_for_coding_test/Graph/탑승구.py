@@ -40,6 +40,6 @@ for _ in range(p):
         break
     else:
         union_parent(parent, root, root - 1)
-        answer += 1
+        answer += 1 
 
 print(answer)
