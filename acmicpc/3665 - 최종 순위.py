@@ -1,4 +1,7 @@
 from collections import deque
+import sys
+
+input = sys.stdin.readline
 
 # 테스트 케이스(Test Case)만큼 반복
 for tc in range(int(input())):
@@ -34,16 +37,16 @@ for tc in range(int(input())):
             indegree[b] += 1
 
     # 위상 정렬(Topology Sort) 시작
-    result = [] # 알고리즘 수행 결과를 담을 리스트
-    q = deque() # 큐 기능을 위한 deque 라이브러리 사용
+    result = []  # 알고리즘 수행 결과를 담을 리스트
+    q = deque()  # 큐 기능을 위한 deque 라이브러리 사용
 
     # 처음 시작할 때는 진입차수가 0인 노드를 큐에 삽입
     for i in range(1, n + 1):
         if indegree[i] == 0:
             q.append(i)
 
-    certain = True # 위상 정렬 결과가 오직 하나인지의 여부
-    cycle = False # 그래프 내 사이클이 존재하는지 여부
+    certain = True  # 위상 정렬 결과가 오직 하나인지의 여부
+    cycle = False  # 그래프 내 사이클이 존재하는지 여부
 
     # 정확히 노드의 개수만큼 반복
     for i in range(n):
@@ -74,6 +77,5 @@ for tc in range(int(input())):
         print("?")
     # 위상 정렬을 수행한 결과 출력
     else:
-        for i in result:
-            print(i, end=' ')
-        print()
+        s = ' '.join(map(str, result))
+        print(s)
