@@ -1,50 +1,87 @@
-fish = [[-1] * 4 for _ in range(4)]
-fish_d = [[-1] * 4 for _ in range(4)]
+import copy
 
-# 0번 인덱스 사용 x
-dx = [0, 0, -1, -1, -1, 0, 1, 1, 1]
-dy = [0, -1, -1, 0, 1, 1, 1, 0, -1]
+array = [[None] * 4 for _ in range(4)]
 
 for i in range(4):
     data = list(map(int, input().split()))
     for j in range(4):
-        fish[i][j] = data[j * 2]
-        d[i][j] = data[j * 2 + 1]
+        # 각 위치마다 [물고기의 번호, 방향]을 저장
+        array[i][j] = [data[j * 2], data[j * 2 + 1] - 1]
 
-shark = [0, 0, 0]  # 상어의 좌표 x, y, 방향
-
-total = 0
-
-
-# 1. 상어가 현재 위치의 물고기를 먹고 같은 방향을 가짐
-# 2. 물고기 이동
-# 3. 상어가 보는 방향 탐색
-# 3-1. 물고기가 존재하면 해당 위치로 이동 후 1로 이동
-# 3-2. 물고기가 존재하지 않으면 종료
-
-def dfs(fish, fish_d, shark):
-    # 1. 상어가 현재 위치의 물고기를 먹고 같은 방향을 가짐
-    x, y = shark  # 상어의 좌표
-    d = fish_d[x][y]  # 상어의 방향
-    size = fish[x][y]  # 물고기 크기만큼 사이즈 증가
-    fish[x][y] = -1  # 물고기 삭제
-
-    fish, fish_d = move(fish, fish_d)
-
-    lst = []
-    # 상어가 보는 방향 탐색
-    for i in range(1, 4):
-        nx = x + dx[d] * i
-        ny = y + dy[d] * i
-        if not 0 <= x < 4 or not 0 <= y < 4:  # 범위를 벗어나면 귀환
-            return 0
-        return total + max(dfs(fish, fish_d, [nx, ny, nd]))
-
-def move(fish, fish_d):
-
-    return fish, fish_d
+dx = [-1, -1, 0, 1, 1, 1, 0, -1]
+dy = [0, -1, -1, -1, 0, 1, 1, 1]
 
 
-dfs(fish, fish_d, shark)
+def turn_left(direction):
+    return (direction + 1) % 8
 
-print(total)
+
+result = 0  # 최종 결과
+
+
+# 특정한 번호의 물고기 찾기
+def find_fish(array, index):
+    for i in range(4):
+        for j in range(4):
+            if array[i][j][0] == index:
+                return (i, j)
+    return None
+
+
+# 모든 물고기 이동
+def move_all_fishes(array, now_x, now_y):
+    for i in range(1, 17):
+        # 물고기 찾기
+        position = find_fish(array, i)
+        if position != None:  # 해당 물고기가 존재하면
+            x, y = position[0], position[1]
+            direction = array[x][y][1]
+
+            # 해당 물고기의 방향을 왼쪽으로 회전시키며 이동이 가능한지 확인
+            for j in range(8):
+                nx = x + dx[direction]
+                ny = y + dy[direction]
+
+                if 0 <= nx < 4 and 0 <= ny < 4:
+                    if not (nx == now_x and ny == now_y):
+                        array[x][y][1] = direction
+                        array[x][y], array[nx][ny] = array[nx][ny], array[x][y]
+                        break
+                direction = turn_left(direction)
+
+
+# 먹을 수 있는 모든 물고기의 위치 반환
+def get_possible_positions(array, now_x, now_y):
+    positions = []
+    direction = array[now_x][now_y][1]
+
+    for i in range(4):
+        now_x += dx[direction]
+        now_y += dy[direction]
+        if 0 <= now_x < 4 and 0 <= now_y < 4:
+            if array[now_x][now_y][0] != -1:
+                positions.append((now_x, now_y))
+    return positions
+
+
+def dfs(array, now_x, now_y, total):
+    global result
+    array = copy.deepcopy(array)
+
+    total += array[now_x][now_y][0]
+    array[now_x][now_y][0] = -1
+
+    move_all_fishes(array, now_x, now_y)
+
+    positions = get_possible_positions(array, now_x, now_y)
+
+    if len(positions) == 0:
+        result = max(result, total)
+        return
+
+    for next_x, next_y in positions:
+        dfs(array, next_x, next_y, total)
+
+
+dfs(array, 0, 0, 0)
+print(result)
