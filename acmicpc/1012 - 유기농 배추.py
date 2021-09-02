@@ -20,7 +20,7 @@ for _ in range(T):
 
 
     def bfs(array, start, visited):
-        if array[start[0]][start[1]] == 1 and not visited[start[0]][start[1]]:
+        if not visited[start[0]][start[1]]:
             queue = deque([start])
 
             visited[start[0]][start[1]] = True
