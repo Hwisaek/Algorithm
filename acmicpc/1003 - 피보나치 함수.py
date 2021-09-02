@@ -1,5 +1,5 @@
 T = int(input())
-fibonacci = [[1, 0], [0, 1], [1, 1], [1, 2], [2, 3]]
+fibonacci = [[1, 0], [0, 1]]
 for i in range(5, 41):
     fibonacci.append([fibonacci[-1][0] + fibonacci[-2][0], fibonacci[-1][1] + fibonacci[-2][1]])
 
