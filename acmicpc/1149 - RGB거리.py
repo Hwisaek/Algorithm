@@ -4,11 +4,12 @@ input = sys.stdin.readline
 
 n = int(input())
 
-array = [list(map(int, input().split())) for _ in range(n)]
+rgb = [(0, 0, 0)]
+for i in range(1, n + 1):
+    r, g, b = map(int, input().split())
+    nr = r + min(rgb[i - 1][1], rgb[i - 1][2])
+    ng = g + min(rgb[i - 1][2], rgb[i - 1][0])
+    nb = b + min(rgb[i - 1][1], rgb[i - 1][0])
+    rgb.append((nr, ng, nb))
 
-for i in range(1, n):
-    array[i][0] += min(array[i - 1][2], array[i - 1][1])
-    array[i][1] += min(array[i - 1][0], array[i - 1][2])
-    array[i][2] += min(array[i - 1][1], array[i - 1][0])
-
-print(min(array[n - 1]))
+print(min(rgb[n]))
