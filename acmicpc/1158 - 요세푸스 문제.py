@@ -2,13 +2,12 @@ from collections import deque
 
 n, k = map(int, input().split())
 
-q = deque([i + 1 for i in range(n)])
+q = [i + 1 for i in range(n)]
 
-answer = '<'
+answer = []
+idx = 0
 while q:
-    q.rotate(-(k - 1))
-    answer += str(q.popleft()) + ', '
+    idx = (idx + k - 1) % len(q)
+    answer.append(str(q.pop(idx)))
 
-answer = answer[:-2] + '>'
-
-print(answer)
+print('<', ', '.join(answer), '>', sep='')
