@@ -1,21 +1,10 @@
-import sys
-
-sys.setrecursionlimit(15000)
-
 n = int(input())
 
-count = 0
+dp = [0] * (n + 1)
+dp[0] = 1
+dp[1] = 1
 
+for i in range(2, n + 1):
+    dp[i] = dp[i - 1] + dp[i - 2]
 
-def dp(n):
-    global count
-    if n == 0:
-        count += 1
-        return
-    elif n < 0:
-        return
-    dp(n - 1), dp(n - 2)
-
-
-dp(n)
-print(count % 10007)
+print(dp[n] % 10007)
