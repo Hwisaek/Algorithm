@@ -13,6 +13,7 @@ combs = combinations(array, 7)
 for comb in combs:
     if sum(comb) == 100:
         answer = comb
+        break
 
 for c in sorted(list(answer)):
     print(c)
