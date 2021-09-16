@@ -17,5 +17,5 @@ for i in range(1, n):
     if array[i][0] >= end:
         end = array[i][1]
         count += 1
-        
+
 print(count)
