@@ -13,10 +13,13 @@ dy = [0, 0, 1, -1]
 q1 = deque()
 q2 = deque()
 
+zero_count = 0
 for i in range(n):
     for j in range(m):
         if array[i][j] == '1':
             q1.append((i, j))
+        elif array[i][j] == '0':
+            zero_count += 1
 
 q1_flag = True
 answer = 0
@@ -32,6 +35,7 @@ while q1 or q2:
         if -1 < nx < n and -1 < ny < m:
             if array[nx][ny] == '0':
                 array[nx][ny] = '1'
+                zero_count -= 1
                 if q1_flag:
                     q2.append((nx, ny))
                 else:
@@ -47,10 +51,7 @@ while q1 or q2:
         answer += 1
         q1_flag = True
 
-for i in range(n):
-    for j in range(m):
-        if array[i][j] == '0':
-            answer = -1
-            break
+if zero_count != 0:
+    answer = -1
 
 print(answer)
