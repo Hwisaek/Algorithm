@@ -22,21 +22,25 @@ for a in range(n):
             if visited[x][y]:
                 return
 
+            visited[x][y] = True
+            if array[x][y] == '0':
+                return
+
+            count += 1
+
             for i in range(4):
                 nx = x + dx[i]
                 ny = y + dy[i]
-                if -1 < nx < n and -1 < ny < n and not visited[nx][ny] and array[nx][ny] == 1:
+                if -1 < nx < n and -1 < ny < n and not visited[nx][ny] and array[nx][ny] == '1':
                     dfs(nx, ny)
-                    visited[nx][ny] = True
-                    count += 1
 
 
         dfs(a, b)
-        counts.append(count)
         if count != 0:
             group += 1
+            counts.append(count)
 
 print(group)
 
-for _ in counts:
+for count in sorted(counts):
     print(count)
