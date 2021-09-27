@@ -1,25 +1,37 @@
 import sys
+from collections import deque
 
 input = sys.stdin.readline
-t = int(input())
+t = int(input().rstrip())
 
 for _ in range(t):
-    p = input()
-    n = input()
-    array = input()[1: -1]
+    p = input().rstrip().replace('RR', '')
+    n = input().rstrip()
+    array = input().rstrip()[1: -1].split(',')
+    if array[0] != '':
+        array = deque(map(int, array))
+    else:
+        array.pop()
 
     error = False
-    order = True
+    order = 1
     for opr in p:
         if opr == 'R':
-            order = not order
+            order *= -1
         elif opr == 'D':
             if not array:
                 error = True
                 print('error')
-            elif order:
-                array = array[2:]
+                break
+            elif order == 1:
+                array.popleft()
             else:
-                array = array[:-2]
+                array.pop()
+
     if not error:
-        print('[' + (array if order else array[::-1]) + ']')
+        print('[', end='')
+        answer = ''
+        for i in range(len(array))[::1 * order]:
+            answer += str(array[i]) + ','
+        print(answer[:-1], end='')
+        print(']')
