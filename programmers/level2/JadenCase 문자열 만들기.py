@@ -7,7 +7,7 @@ def solution(s):
     return ' '.join(arr)
 
 
-print(solution("3people unFollowed me"))
-print(solution("for the last week"))
-print(solution("forthelastweek"))
-print(solution("for  the last week"))
+print(solution("3people unFollowed me"))  # 3people Unfollowed Me
+print(solution("for the last week"))  # For The Last Week
+print(solution("forthelastweek"))  # Forthelastweek
+print(solution("for  the last week"))  # For  The Last Week
