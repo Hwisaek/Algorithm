@@ -4,15 +4,22 @@ from collections import Counter
 
 def solution(people, limit):
     answer = 0
-    count = Counter(people)
-    now = 0
-    for kg in sorted(count.keys()):
-        p = min((limit - now) // kg, count[kg])
-        now += kg * p
-        count[kg] -= p
-
+    people.sort()
+    l, r = 0, len(people) - 1
+    while l <= r:
+        if people[l] + people[r] <= limit:
+            l += 1
+            r -= 1
+        else:
+            r -= 1
+        answer += 1
     return answer
 
 
-print(solution([70, 50, 80, 50], 100))
-print(solution([70, 80, 50], 100))
+# print(solution([70, 50, 80, 50], 100))  # 3
+print(solution([70, 80, 50], 100))  # 3
+print(solution([70, 50, 80, 50, 50, 40], 100))  # 4
+print(solution([100], 100))  # 1
+print(solution([50], 100))  # 1
+print(solution([40, 60, 60, 70, 100], 100))  # 4
+print(solution([40, 40, 40, 50, 50, 50, 50, 60], 100))  # 4
