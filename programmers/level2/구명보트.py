@@ -1,7 +1,4 @@
 # https://programmers.co.kr/learn/courses/30/lessons/42885
-from collections import Counter
-
-
 def solution(people, limit):
     answer = 0
     people.sort()
@@ -16,7 +13,7 @@ def solution(people, limit):
     return answer
 
 
-# print(solution([70, 50, 80, 50], 100))  # 3
+print(solution([70, 50, 80, 50], 100))  # 3
 print(solution([70, 80, 50], 100))  # 3
 print(solution([70, 50, 80, 50, 50, 40], 100))  # 4
 print(solution([100], 100))  # 1
