@@ -1,5 +1,4 @@
 # https://programmers.co.kr/learn/courses/30/lessons/17679
-
 dx = [1, 0, 1, 0]
 dy = [0, 1, 1, 0]
 
