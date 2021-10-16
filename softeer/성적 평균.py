@@ -1,3 +1,4 @@
+# https://softeer.ai/practice/info.do?eventIdx=1&psProblemId=389
 n, k = map(int, input().split())
 s = list(map(int, input().split()))
 
