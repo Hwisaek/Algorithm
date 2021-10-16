@@ -7,7 +7,7 @@ def solution(m, n, board):
     answer = 0
     board = list(map(list, board))
     while True:
-        visited = [[False] * n for _ in range(m)]
+        flag = [[False] * n for _ in range(m)]
         chk = True  # 4블럭 제거 유무
         # 4블록 위치 찾기
         for x in range(m - 1):
@@ -26,11 +26,11 @@ def solution(m, n, board):
                         chk = False
                         for i in range(4):
                             nx, ny = x + dx[i], y + dy[i]
-                            visited[nx][ny] = True
+                            flag[nx][ny] = True
 
         for x in range(m):
             for y in range(n):
-                if visited[x][y]:
+                if flag[x][y]:
                     for i in range(1, x + 1)[::-1]:
                         board[i][y] = board[i - 1][y]
                     board[0][y] = "@"
