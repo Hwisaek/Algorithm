@@ -1,3 +1,4 @@
+# https://softeer.ai/practice/info.do?eventIdx=1&psProblemId=408
 gears = list(map(int, input().split()))
 
 
