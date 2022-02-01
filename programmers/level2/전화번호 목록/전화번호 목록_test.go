@@ -1,21 +1,25 @@
 package 전화번호_목록_test
 
 import (
-	"strconv"
 	"testing"
 )
 
-func solution(phoneBook []string) (result bool) {
+func solution(phoneBook []string) bool {
+	dict := make(map[string]string)
+	for _, s := range phoneBook {
+		dict[s] = s
+	}
+
 	for _, num := range phoneBook {
 		n := ""
-		for _, i := range num[:len(num)-1] {
-			n += strconv.Itoa(int(i) - '0')
-			if val, ok := dict["foo"]; ok {
-				//do something here
+		for i := range num[:len(num)-1] {
+			n += num[i : i+1]
+			if _, ok := dict[n]; ok {
+				return false
 			}
 		}
 	}
-	return
+	return true
 }
 
 func TestSolution(t *testing.T) {
