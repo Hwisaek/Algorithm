@@ -6,9 +6,34 @@ import (
 	"testing"
 )
 
-func solution(priorities []int, location int) int {
-	q := new(Queue)
-	return 0
+func solution(priorities []int, location int) (count int) {
+	for len(priorities) > 0 {
+		J := priorities[0]
+		priorities = priorities[1:]
+		location--
+		if isPrior(J, priorities) {
+			count++
+			if location == -1 {
+				return count
+			}
+		} else {
+			priorities = append(priorities, J)
+			if location < 0 {
+				location = len(priorities) - 1
+			}
+		}
+	}
+	return
+}
+
+func isPrior(j int, priorities []int) bool {
+	max := 0
+	for _, priority := range priorities {
+		if priority > max {
+			max = priority
+		}
+	}
+	return j >= max
 }
 
 func TestSolution(t *testing.T) {
@@ -19,7 +44,7 @@ func TestSolution(t *testing.T) {
 	for i := range answer {
 		result := solution(priorities[i], location[i])
 		if !reflect.DeepEqual(result, answer[i]) {
-			t.Error(fmt.Sprintf("Error %v. result: %v, answer: %v", i+1, result, answer[i]))
+			t.Error(fmt.Sprintf("Testcase %v Failed. result: %v, answer: %v", i+1, result, answer[i]))
 		}
 	}
 }
