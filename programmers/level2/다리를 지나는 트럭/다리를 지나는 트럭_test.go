@@ -6,15 +6,32 @@ import (
 	"testing"
 )
 
-func solution(bridgeLength int, weight int, truckWeights []int) int {
-	return 0
+func solution(bridgeLength int, weight int, truckWeights []int) (time int) {
+	bridge := make([]int, bridgeLength)
+	curWeight := 0
+	for len(truckWeights) > 0 || curWeight > 0 {
+		curWeight -= bridge[0]
+		bridge = bridge[1:]
+		if len(truckWeights) > 0 {
+			if curWeight+truckWeights[0] <= weight {
+				truck := truckWeights[0]
+				truckWeights = truckWeights[1:]
+				bridge = append(bridge, truck)
+				curWeight += truck
+			} else {
+				bridge = append(bridge, 0)
+			}
+		}
+		time++
+	}
+	return
 }
 
 func TestSolution(t *testing.T) {
 	bridgeLength := []int{2, 100, 100}
 	weight := []int{10, 100, 100}
 	truckWeights := [][]int{{7, 4, 5, 6}, {10}, {10, 10, 10, 10, 10, 10, 10, 10, 10, 10}}
-	answer := []int{1, 5}
+	answer := []int{8, 101, 110}
 
 	for i := range answer {
 		result := solution(bridgeLength[i], weight[i], truckWeights[i])
