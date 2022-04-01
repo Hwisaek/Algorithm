@@ -10,7 +10,7 @@ def solution(numbers):
     prime[0:2] = [False, False]
 
     # 에라토스 테네스의 체 만들기
-    for i in range(2, int(maxN ** 0.5)):
+    for i in range(2, int(maxN ** 0.5 + 1)):
         if prime[i]:
             for j in range(i * 2, maxN + 1, i):
                 prime[j] = False
