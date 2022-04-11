@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"sort"
 	"testing"
 )
 
@@ -13,21 +13,15 @@ func main() {
 }
 
 func solution2480(a, b, c int) (result int) {
+	arr := []int{a, b, c}
+	sort.Ints(arr)
+	a, b, c = arr[0], arr[1], arr[2]
 	if a == b && b == c {
 		result = 10000 + a*1000
-	} else if a == b || b == c || a == c {
-		var n int
-		if a == b {
-			n = a
-		} else if b == c {
-			n = b
-		} else {
-			n = c
-		}
-		result = 1000 + n*100
+	} else if a == b || b == c {
+		result = 1000 + b*100
 	} else {
-		max := int(math.Max(float64(a), math.Max(float64(b), float64(c))))
-		result = max * 100
+		result = c * 100
 	}
 	return
 }
