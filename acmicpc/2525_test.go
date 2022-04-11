@@ -1,25 +1,18 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"testing"
 )
 
 func main() {
-	var reader *bufio.Reader = bufio.NewReader(os.Stdin)
-	var writer *bufio.Writer = bufio.NewWriter(os.Stdout)
-
-	defer writer.Flush()
-
 	var A, B, C int
-	_, _ = fmt.Fscanln(reader, &A, &B)
-	_, _ = fmt.Fscanln(reader, &C)
-	fmt.Println(solution(A, B, C))
+	_, _ = fmt.Scanln(&A, &B)
+	_, _ = fmt.Scanln(&C)
+	fmt.Println(solution2525(A, B, C))
 }
 
-func solution(hour, min, duration int) (result string) {
+func solution2525(hour, min, duration int) (result string) {
 	min += duration
 	if min > 59 {
 		hour += min / 60
@@ -31,7 +24,7 @@ func solution(hour, min, duration int) (result string) {
 	return fmt.Sprintf(`%d %d`, hour, min)
 }
 
-func Test_solution(t *testing.T) {
+func Test_solution2525(t *testing.T) {
 	type args struct {
 		hour     int
 		min      int
@@ -99,8 +92,8 @@ func Test_solution(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if gotResult := solution(tt.args.hour, tt.args.min, tt.args.duration); gotResult != tt.wantResult {
-				t.Errorf("solution() = %v, want %v", gotResult, tt.wantResult)
+			if gotResult := solution2525(tt.args.hour, tt.args.min, tt.args.duration); gotResult != tt.wantResult {
+				t.Errorf("solution2525() = %v, want %v", gotResult, tt.wantResult)
 			}
 		})
 	}
