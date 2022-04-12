@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"container/list"
 	"fmt"
 	"os"
 	"strconv"
@@ -9,13 +10,14 @@ import (
 )
 
 func main() {
+	result := ""
 	scanner := bufio.NewScanner(os.Stdin)
 
 	scanner.Scan()
 	str := scanner.Text()
 	n, _ := strconv.Atoi(str)
 
-	queue := []int{}
+	queue := list.New()
 	for ; n > 0; n-- {
 		scanner.Scan()
 		arr := strings.Split(scanner.Text(), " ")
@@ -24,34 +26,36 @@ func main() {
 		switch command {
 		case "push":
 			num, _ := strconv.Atoi(arr[1])
-			queue = append(queue, num)
+			queue.PushBack(num)
 		case "pop":
-			if len(queue) == 0 {
-				fmt.Println(-1)
+			if queue.Len() == 0 {
+				result += "-1\n"
 			} else {
-				fmt.Println(queue[0])
-				queue = queue[1:]
+				result += fmt.Sprintf("%d\n", queue.Front().Value)
+				queue.Remove(queue.Front())
 			}
 		case "size":
-			fmt.Println(len(queue))
+			result += fmt.Sprintf("%d\n", queue.Len())
 		case "empty":
-			if len(queue) == 0 {
-				fmt.Println(1)
+			if queue.Len() == 0 {
+				result += "1\n"
 			} else {
-				fmt.Println(0)
+				result += "0\n"
 			}
 		case "front":
-			if len(queue) == 0 {
+			if queue.Len() == 0 {
+				result += "-1\n"
 				fmt.Println(-1)
 			} else {
-				fmt.Println(queue[0])
+				result += fmt.Sprintf("%d\n", queue.Front().Value)
 			}
 		case "back":
-			if len(queue) == 0 {
-				fmt.Println(-1)
+			if queue.Len() == 0 {
+				result += "-1\n"
 			} else {
-				fmt.Println(queue[len(queue)-1])
+				result += fmt.Sprintf("%d\n", queue.Back().Value)
 			}
 		}
 	}
+	fmt.Println(result)
 }
