@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"testing"
+	"unicode"
 )
 
 func main() {
@@ -22,55 +23,33 @@ func main() {
 
 func solution4949(str string) (result string) {
 	stack := []string{}
-	isBracket := map[string]bool{
-		"[": true,
-		"]": true,
-		"(": true,
-		")": true,
-		"{": true,
-		"}": true,
-	}
 	pairBracket := map[string]string{
-		"[": "]",
-		"]": "[",
-		"(": ")",
 		")": "(",
-		"{": "}",
 		"}": "{",
+		"]": "[",
 	}
 
 	for _, i32 := range str {
-		s := string(i32)
-		if isBracket[s] {
-			stack = append(stack, s)
+		if unicode.IsLetter(i32) || " " == string(i32) || "." == string(i32) {
+			continue
 		}
-	}
-	if len(stack) == 0 {
-		return "yes"
-	}
-	if stack[0] == ")" || stack[0] == "}" || stack[0] == "]" {
-		return "no"
-	}
-	if len(stack) > 0 && (stack[len(stack)-1] == "(" || stack[len(stack)-1] == "{" || stack[len(stack)-1] == "[") {
-		return "no"
-	}
 
-	check := []string{}
-	for _, s := range stack {
-		if s == ")" || s == "}" || s == "]" {
-			if len(check) == 0 {
+		s := string(i32)
+		if pair, ok := pairBracket[s]; ok {
+			if len(stack) == 0 {
 				return "no"
 			}
-			if pairBracket[s] == check[len(check)-1] {
-				check = check[:len(check)-1]
+			if pair == stack[len(stack)-1] {
+				stack = stack[:len(stack)-1]
 			} else {
 				return "no"
 			}
 		} else {
-			check = append(check, s)
+			stack = append(stack, s)
 		}
 	}
-	if len(check) > 0 {
+
+	if len(stack) > 0 {
 		return "no"
 	}
 
