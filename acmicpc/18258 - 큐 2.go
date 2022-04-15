@@ -7,12 +7,9 @@ import (
 	"strings"
 )
 
-var (
-	rd = bufio.NewReader(os.Stdin)
-	wr = bufio.NewWriter(os.Stdout)
-)
-
 func main() {
+	rd := bufio.NewReader(os.Stdin)
+	wr := bufio.NewWriter(os.Stdout)
 	defer wr.Flush()
 
 	text, _ := rd.ReadString('\n') // 여기서 text는 마지막에 줄바꿈 문자를 포함하므로
