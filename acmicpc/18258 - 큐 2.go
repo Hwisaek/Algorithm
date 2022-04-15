@@ -2,60 +2,91 @@ package main
 
 import (
 	"bufio"
-	"container/list"
-	"fmt"
 	"os"
 	"strconv"
 	"strings"
 )
 
+var (
+	rd = bufio.NewReader(os.Stdin)
+	wr = bufio.NewWriter(os.Stdout)
+)
+
 func main() {
-	result := ""
-	scanner := bufio.NewScanner(os.Stdin)
+	defer wr.Flush()
 
-	scanner.Scan()
-	str := scanner.Text()
-	n, _ := strconv.Atoi(str)
+	text, _ := rd.ReadString('\n') // 여기서 text는 마지막에 줄바꿈 문자를 포함하므로
+	text = strings.TrimSpace(text) // 줄바꿈 문자를 제거해야 함
+	n, _ := strconv.Atoi(text)
 
-	queue := list.New()
+	queue := newQueue()
 	for ; n > 0; n-- {
-		scanner.Scan()
-		arr := strings.Split(scanner.Text(), " ")
+		str, _ := rd.ReadString('\n') // 여기서 str는 마지막에 줄바꿈 문자를 포함하므로
+		str = strings.TrimSpace(str)  // 줄바꿈 문자를 제거해야 함
+		arr := strings.Split(str, " ")
 		command := arr[0]
 
 		switch command {
 		case "push":
 			num, _ := strconv.Atoi(arr[1])
-			queue.PushBack(num)
+			queue.push(num)
 		case "pop":
-			if queue.Len() == 0 {
-				result += "-1\n"
-			} else {
-				result += fmt.Sprintf("%d\n", queue.Front().Value)
-				queue.Remove(queue.Front())
-			}
+			wr.WriteString(strconv.Itoa(queue.pop()) + "\n")
 		case "size":
-			result += fmt.Sprintf("%d\n", queue.Len())
+			wr.WriteString(strconv.Itoa(queue.size()) + "\n")
 		case "empty":
-			if queue.Len() == 0 {
-				result += "1\n"
-			} else {
-				result += "0\n"
-			}
+			wr.WriteString(strconv.Itoa(queue.empty()) + "\n")
 		case "front":
-			if queue.Len() == 0 {
-				result += "-1\n"
-				fmt.Println(-1)
-			} else {
-				result += fmt.Sprintf("%d\n", queue.Front().Value)
-			}
+			wr.WriteString(strconv.Itoa(queue.front()) + "\n")
 		case "back":
-			if queue.Len() == 0 {
-				result += "-1\n"
-			} else {
-				result += fmt.Sprintf("%d\n", queue.Back().Value)
-			}
+			wr.WriteString(strconv.Itoa(queue.back()) + "\n")
 		}
 	}
-	fmt.Println(result)
+
+}
+
+type queue struct {
+	queue []int
+}
+
+func newQueue() queue {
+	return queue{[]int{}}
+}
+
+func (q *queue) push(x int) {
+	q.queue = append(q.queue, x)
+}
+
+func (q *queue) pop() (n int) {
+	if len(q.queue) == 0 {
+		return -1
+	}
+	n = q.queue[0]
+	q.queue = q.queue[1:]
+	return
+}
+
+func (q *queue) size() int {
+	return len(q.queue)
+}
+
+func (q *queue) empty() (n int) {
+	if len(q.queue) == 0 {
+		return 1
+	}
+	return 0
+}
+
+func (q *queue) front() int {
+	if q.empty() == 0 {
+		return q.queue[0]
+	}
+	return -1
+}
+
+func (q *queue) back() int {
+	if q.empty() == 0 {
+		return q.queue[q.size()-1]
+	}
+	return -1
 }
