@@ -17,7 +17,7 @@ func main() {
 	n, _ := strconv.Atoi(strArr[0])
 	m, _ := strconv.Atoi(strArr[1])
 
-	target := []int{}
+	target := make([]int, 0)
 	for _, s := range strings.Split(scan(rd), " ") {
 		atoi, _ := strconv.Atoi(s)
 		target = append(target, atoi)
