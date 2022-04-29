@@ -13,12 +13,12 @@ func main() {
 	rd := bufio.NewReader(os.Stdin)
 	wr := bufio.NewWriter(os.Stdout)
 
-	strArr := strings.Split(scan(rd), " ")
+	strArr := strings.Split(scan1021(rd), " ")
 	n, _ := strconv.Atoi(strArr[0])
 	m, _ := strconv.Atoi(strArr[1])
 
 	target := make([]int, 0)
-	for _, s := range strings.Split(scan(rd), " ") {
+	for _, s := range strings.Split(scan1021(rd), " ") {
 		atoi, _ := strconv.Atoi(s)
 		target = append(target, atoi)
 	}
@@ -61,7 +61,7 @@ func getIndexOf(arr *[]int, target *[]int) int {
 	return -1
 }
 
-func scan(rd *bufio.Reader) string {
+func scan1021(rd *bufio.Reader) string {
 	str, _ := rd.ReadString('\n') // 여기서 text는 마지막에 줄바꿈 문자를 포함하므로
 	str = strings.TrimSpace(str)  // 줄바꿈 문자를 제거해야 함
 	return str
