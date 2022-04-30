@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 	"testing"
@@ -19,23 +20,23 @@ func main() {
 		for i := 0; i < n; i++ {
 			numberList = append(numberList, scan5052(rd))
 		}
-		_, _ = wr.WriteString(solution5052(numberList))
+		_, _ = wr.WriteString(solution5052(numberList) + "\n")
 	}
 
 	_ = wr.Flush()
 }
 
 func solution5052(numberList []string) (result string) {
-	dict := make(map[string]bool)
+	sort.Strings(numberList)
 
-	for _, number := range numberList {
-		for j := 1; j < len(number)+1; j++ {
-			_, isExist := dict[number[:j]]
-			if isExist {
-				return "NO"
-			}
+	lenNumberList := len(numberList)
+	for i := 0; i < lenNumberList-1; i++ {
+		if len(numberList[i]) >= len(numberList[i+1]) {
+			continue
 		}
-		dict[number] = true
+		if strings.HasPrefix(numberList[i+1], numberList[i]) {
+			return "NO"
+		}
 	}
 	return "YES"
 }
