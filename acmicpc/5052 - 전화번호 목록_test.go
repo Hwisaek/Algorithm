@@ -27,7 +27,9 @@ func main() {
 }
 
 func solution5052(numberList []string) (result string) {
-	sort.Strings(numberList)
+	sort.Slice(numberList, func(i, j int) bool {
+		return numberList[i] < numberList[j]
+	})
 
 	lenNumberList := len(numberList)
 	for i := 0; i < lenNumberList-1; i++ {
