@@ -34,7 +34,7 @@ func solution5052(numberList []string) (result string) {
 		if len(numberList[i]) >= len(numberList[i+1]) {
 			continue
 		}
-		if strings.HasPrefix(numberList[i+1], numberList[i]) {
+		if numberList[i] == numberList[i+1][:len(numberList[i])] {
 			return "NO"
 		}
 	}
