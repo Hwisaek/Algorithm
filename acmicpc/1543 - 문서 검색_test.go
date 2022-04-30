@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"os"
-	"regexp"
 	"strconv"
 	"strings"
 	"testing"
@@ -21,9 +20,7 @@ func main() {
 }
 
 func solution1543(document, word string) (result string) {
-	rgx, _ := regexp.Compile(word)
-	stringArray := rgx.FindAllString(document, -1)
-	return strconv.Itoa(len(stringArray))
+	return strconv.Itoa(strings.Count(document, word))
 }
 
 func scan1543(rd *bufio.Reader) string {
