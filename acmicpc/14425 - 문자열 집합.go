@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -15,13 +16,13 @@ func main() {
 
 	set := make(map[string]bool)
 	for i := 0; i < n; i++ {
-		str, _ := rd.ReadString('\n') // 여기서 text는 마지막에 줄바꿈 문자를 포함하므로
+		str := scan14425(rd)
 		set[str] = true
 	}
 
 	result := 0
 	for i := 0; i < m; i++ {
-		str, _ := rd.ReadString('\n') // 여기서 text는 마지막에 줄바꿈 문자를 포함하므로
+		str := scan14425(rd)
 		if set[str] {
 			result++
 		}
@@ -29,4 +30,10 @@ func main() {
 
 	_, _ = wr.WriteString(fmt.Sprintf("%d", result))
 	_ = wr.Flush()
+}
+
+func scan14425(rd *bufio.Reader) string {
+	str, _ := rd.ReadString('\n') // 여기서 text는 마지막에 줄바꿈 문자를 포함하므로
+	str = strings.TrimSpace(str)  // 줄바꿈 문자를 제거해야 함
+	return str
 }
