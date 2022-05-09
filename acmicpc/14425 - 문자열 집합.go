@@ -33,7 +33,7 @@ func main() {
 }
 
 func scan14425(rd *bufio.Reader) string {
-	str, _ := rd.ReadString('\n') // 여기서 text는 마지막에 줄바꿈 문자를 포함하므로
-	str = strings.TrimSpace(str)  // 줄바꿈 문자를 제거해야 함
+	str, _ := rd.ReadString('\n')
+	str = strings.TrimSpace(str) // 마지막 줄바꿈 문자가 포함되므로 제거
 	return str
 }
