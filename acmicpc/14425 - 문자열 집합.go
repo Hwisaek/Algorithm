@@ -28,7 +28,7 @@ func main() {
 		}
 	}
 
-	_, _ = wr.WriteString(fmt.Sprintf("%d", result))
+	_, _ = fmt.Fprint(wr, result)
 	_ = wr.Flush()
 }
 
