@@ -14,7 +14,6 @@ func main() {
 
 	var a, b int
 	_, _ = fmt.Fscanln(rd, &a, &b)
-
 	arr1 := strings.Split(scan1269(rd), " ")
 	A := make(map[string]struct{})
 	for i := 0; i < a; i++ {
