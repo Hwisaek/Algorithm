@@ -44,13 +44,17 @@ func solution(fees []int, records []string) (result []int) {
 			*arr[2] += (23*60 + 59) - *arr[0]
 		}
 		//주차요금 = 기본요금 + ⌈(누적 주차 시간 - 기본 시간) / 단위 시간⌉ x 단위 요금
-		fee := baseRate + int(math.Ceil(float64(*arr[2]-baseTime)/float64(unitTime)))*unitFee
+		diff := *arr[2] - baseTime
+		if diff < 0 {
+			diff = 0
+		}
+		fee := baseRate + int(math.Ceil(float64(diff)/float64(unitTime)))*unitFee
 
 		numFeeArr = append(numFeeArr, []int{carNum, fee})
 	}
 
 	sort.Slice(numFeeArr, func(i, j int) bool {
-		return numFeeArr[i][1] < numFeeArr[j][1]
+		return numFeeArr[i][0] < numFeeArr[j][0]
 	})
 	for _, arr := range numFeeArr {
 		result = append(result, arr[1])
