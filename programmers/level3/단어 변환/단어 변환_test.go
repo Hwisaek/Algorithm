@@ -40,11 +40,10 @@ func solution(begin string, target string, words []string) (count int) {
 func isContains(words []string, target string) (flag bool) {
 	for _, word := range words {
 		if target == word {
-			flag = true
-			break
+			return true
 		}
 	}
-	return flag
+	return false
 }
 
 func isChangeable(begin, target string) (changeable bool) {
