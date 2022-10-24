@@ -7,42 +7,47 @@ import (
 )
 
 type song struct {
-	idx, play int
+	id   int
+	play int
+}
+type genreCount struct {
+	name  string
+	count int
 }
 
-func solution(genres []string, plays []int) (result []int) {
-	songs := make(map[string][]song)
-	total := make(map[string]int)
+func solution(genres []string, plays []int) (album []int) {
+	genreCategorized := make(map[string][]song)
+	genrePlayed := make(map[string]int)
 
-	for idx := range plays {
-		genre, play := genres[idx], plays[idx]
-		songs[genre] = append(songs[genre], song{idx, play})
-		total[genre] += play
+	for i := range plays {
+		genre, play := genres[i], plays[i]
+		genreCategorized[genre] = append(genreCategorized[genre], song{id: i, play: play})
+		genrePlayed[genre] += play
 	}
 
-	arr := make([][2]interface{}, 0, len(total))
-	for k, v := range total {
-		arr = append(arr, [2]interface{}{k, v})
+	genreRank := make([]genreCount, 0, len(genrePlayed))
+	for name, count := range genrePlayed {
+		genreRank = append(genreRank, genreCount{name: name, count: count})
 	}
 
-	for _, v := range songs {
+	for _, v := range genreCategorized {
 		sort.Slice(v, func(i, j int) bool {
 			if v[i].play == v[j].play {
-				return v[i].idx < v[j].idx
+				return v[i].id < v[j].id
 			}
 			return v[i].play > v[j].play
 		})
 	}
-	sort.Slice(arr, func(i, j int) bool {
-		return arr[i][1].(int) > arr[j][1].(int)
+	sort.Slice(genreRank, func(i, j int) bool {
+		return genreRank[i].count > genreRank[j].count
 	})
 
-	for _, e := range arr {
-		for i, s := range songs[e[0].(string)] {
+	for _, g := range genreRank {
+		for i, s := range genreCategorized[g.name] {
 			if i > 1 {
 				break
 			}
-			result = append(result, s.idx)
+			album = append(album, s.id)
 		}
 	}
 	return
