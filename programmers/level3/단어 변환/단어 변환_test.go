@@ -5,7 +5,7 @@ import (
 )
 
 func solution(begin string, target string, words []string) (count int) {
-	if !isContained(words, target) {
+	if !isContains(words, target) {
 		return 0
 	}
 
@@ -37,7 +37,7 @@ func solution(begin string, target string, words []string) (count int) {
 	return
 }
 
-func isContained(words []string, target string) (flag bool) {
+func isContains(words []string, target string) (flag bool) {
 	for _, word := range words {
 		if target == word {
 			flag = true
