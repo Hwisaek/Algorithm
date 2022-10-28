@@ -15,7 +15,8 @@ var (
 
 func main() {
 	input, _ := r.ReadString('\n')
-
-	_, _ = fmt.Fprintln(w, len(regexp.MustCompile("c=|c-|dz=|d-|lj|nj|s=|z=|[a-z]").FindAllString(strings.TrimSpace(input), -1)))
+	regex := regexp.MustCompile("c=|c-|dz=|d-|lj|nj|s=|z=|[a-z]")
+	alphabets := regex.FindAllString(strings.TrimSpace(input), -1)
+	_, _ = fmt.Fprintln(w, len(alphabets))
 	_ = w.Flush()
 }
