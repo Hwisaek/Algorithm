@@ -1,15 +1,12 @@
 package main
 
-import "fmt"
-
 func solution(numbers []int, k int) (answer int) {
 	answer = 1
 	length := len(numbers)
 	for k > 1 {
-		fmt.Println(answer)
 		answer += 2
 		if answer > length {
-			answer = answer%length + 1
+			answer = answer % length
 		}
 		k--
 	}
@@ -18,4 +15,6 @@ func solution(numbers []int, k int) (answer int) {
 
 func main() {
 	solution([]int{1, 2, 3, 4}, 2)
+	solution([]int{1, 2, 3, 4, 5, 6}, 5)
+	solution([]int{1, 2, 3}, 3)
 }
