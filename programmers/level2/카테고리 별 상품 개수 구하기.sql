@@ -1,3 +1,9 @@
-select substr(product_code,1,2),count(*) from product
-group by substr(product_code,1,2)
-order by substr(product_code,1,2)
+SELECT
+    substr(product_code, 1, 2),
+    count(*)
+FROM
+    product
+GROUP BY
+    substr(product_code, 1, 2)
+ORDER BY
+    substr(product_code, 1, 2)
