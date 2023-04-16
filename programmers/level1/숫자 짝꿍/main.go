@@ -16,6 +16,7 @@ func solution(X string, Y string) (result string) {
 		y[string(v)]++
 	}
 
+	strings.count
 	list := make([]string, 0)
 	for k := range x {
 		if _, ok := y[k]; ok {
