@@ -505,3 +505,4 @@ cython_debug/
 #.idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/java,go,goland,pycharm,eclipse,intellij,python
+.vscode/
