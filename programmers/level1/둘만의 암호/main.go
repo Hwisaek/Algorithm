@@ -2,16 +2,21 @@ package main
 
 import (
 	"fmt"
-	"sort"
 )
 
 func solution(s string, skip string, index int) string {
 	result := make([]rune, 0)
 
-	runes := []rune(skip)
-	sort.Slice(runes, func(i, j int) bool {
-		return runes[i] < runes[j]
-	})
+	alphabets := make([]rune, 0)
+	for i := 'a'; i <= 'z'; i++ {
+		alphabets = append(alphabets, i)
+	}
+	alphabets = append(alphabets, append(alphabets, alphabets...)...)
+
+	runes := make(map[rune]any)
+	for _, v := range skip {
+		runes[v] = nil
+	}
 
 	for _, i := range s {
 		c := i + rune(index)
