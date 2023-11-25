@@ -2,37 +2,29 @@ package main
 
 import (
 	"fmt"
-	"sort"
+	"strings"
 )
 
-func solution(s string, skip string, index int) string {
-	result := make([]rune, 0)
+func solution(s string, skip string, index int) (result string) {
+	aMap := make(map[rune]int)
+	aSlice := make([]rune, 0, 60)
 
-	runes := []rune(skip)
-	sort.Slice(runes, func(i, j int) bool {
-		return runes[i] < runes[j]
-	})
-
-	for _, i := range s {
-		c := i + rune(index)
-
-		for _, k := range runes {
-			if c > 'z' {
-				c -= 'z' - 'a' + 1
-			}
-			if i < k && c >= k {
-				c++
-			}
+	for i := 'a'; i <= 'z'; i++ {
+		if strings.IndexRune(skip, i) != -1 {
+			continue
 		}
-
-		if c > 'z' {
-			c -= 'z' - 'a' + 1
-		}
-
-		result = append(result, c)
+		aMap[i] = len(aSlice)
+		aSlice = append(aSlice, i)
 	}
 
-	return string(result)
+	aSlice = append(aSlice, append(aSlice, aSlice...)...)
+
+	var sb strings.Builder
+	for _, v := range s {
+		sb.WriteRune(aSlice[aMap[v]+index])
+	}
+
+	return sb.String()
 }
 
 func main() {
