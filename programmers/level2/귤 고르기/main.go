@@ -3,17 +3,29 @@ package main
 import "sort"
 
 func solution(k int, tangerine []int) int {
+	sum := k
 	count := map[int]int{}
 	for _, v := range tangerine {
 		count[v]++
 	}
 
-	mapToSlice := make([]int, 0)
+	slice := make([]int, 0)
 	for _, v := range count {
-		mapToSlice = append(mapToSlice, v)
+		slice = append(slice, v)
 	}
 
-	sort.Sort(sort.Reverse(sort.IntSlice(mapToSlice)))
+	sort.Sort(sort.Reverse(sort.IntSlice(slice)))
 
-	return 0
+	for i, e := range slice {
+		sum -= e
+		if sum <= 0 {
+			return i + 1
+		}
+	}
+
+	return k
+}
+
+func main() {
+	solution(6, []int{1, 3, 2, 5, 4, 5, 2, 3})
 }
