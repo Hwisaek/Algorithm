@@ -4,8 +4,6 @@ import (
 	"bufio"
 	. "fmt"
 	"os"
-	"strconv"
-	"strings"
 )
 
 func main() {
@@ -13,7 +11,12 @@ func main() {
 	w := bufio.NewWriter(os.Stdout)
 	defer w.Flush()
 
-	var N, B int
-	Fscan(r, &N, &B)
-	Fprint(w, strings.ToUpper(strconv.FormatInt(int64(N), B)))
+	var T int
+	Fscan(r, &T)
+
+	for i := 0; i < T; i++ {
+		var C int
+		Fscan(r, &C)
+		Fprint(w, C/25, " ", C%25/10, " ", C%25%10/5, " ", C%25%10%5, "\n")
+	}
 }
