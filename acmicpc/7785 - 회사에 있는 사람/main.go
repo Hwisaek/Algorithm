@@ -5,34 +5,43 @@ import (
 	. "fmt"
 	"os"
 	"sort"
+	"strconv"
 )
 
-var r = bufio.NewReader(os.Stdin)
-var w = bufio.NewWriter(os.Stdout)
+var s, w = bufio.NewScanner(os.Stdin), bufio.NewWriter(os.Stdout)
 
 func main() {
-	defer w.Flush()
+	s.Split(bufio.ScanWords)
 
 	var n int
-	Fscanln(r, &n)
+	s.Scan()
+	n, _ = strconv.Atoi(s.Text())
 
-	a := make(map[string]struct{})
+	hash := make(map[string]struct{}, n)
 	for i := 0; i < n; i++ {
-		var n, t string
-		Fscanln(r, &n, &t)
-		if t == "enter" {
-			a[n] = struct{}{}
+		s.Scan()
+		name := s.Text()
+		s.Scan()
+		status := s.Text()
+
+		if status[0] == 'e' {
+			hash[name] = struct{}{}
 		} else {
-			delete(a, n)
+			delete(hash, name)
 		}
 	}
 
-	s := make([]string, 0, len(a))
-	for k := range a {
-		s = append(s, k)
+	arr := make([]string, 0, len(hash))
+	for name := range hash {
+		arr = append(arr, name)
 	}
-	sort.Strings(s)
-	for _, e := range s {
-		Fprintln(w, e)
+
+	sort.Slice(arr, func(i, j int) bool {
+		return arr[i] > arr[j]
+	})
+
+	for _, name := range arr {
+		Fprintln(w, name)
 	}
+	w.Flush()
 }
