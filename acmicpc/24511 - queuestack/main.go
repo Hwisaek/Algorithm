@@ -9,21 +9,17 @@ import (
 )
 
 func main() {
-	sc := bufio.NewScanner(os.Stdin)
+	r := bufio.NewReader(os.Stdin)
 	w := bufio.NewWriter(os.Stdout)
 	defer w.Flush()
 
-	sc.Scan()
+	r.ReadString('\n')
 
-	sc.Scan()
-	A := strings.Split(sc.Text(), " ")
+	s, _ := r.ReadString('\n')
+	A := strings.Fields(s)
 
-	sc.Scan()
-	B := strings.Split(sc.Text(), " ")
-
-	if len(A) != len(B) {
-		panic("test")
-	}
+	s, _ = r.ReadString('\n')
+	B := strings.Fields(s)
 
 	l := list.New()
 	for i := 0; i < len(B); i++ {
@@ -32,11 +28,12 @@ func main() {
 		}
 	}
 
-	sc.Scan()
+	r.ReadString('\n')
 
-	sc.Scan()
-	for _, s := range strings.Split(sc.Text(), " ") {
-		l.PushFront(s)
+	s, _ = r.ReadString('\n')
+	C := strings.Fields(s)
+	for _, c := range C {
+		l.PushFront(c)
 		x := l.Back()
 		fmt.Fprint(w, x.Value, " ")
 		l.Remove(x)
