@@ -50,7 +50,7 @@ func dive(rowIdx int) {
 		// 현재 열과 대각선이 사용 중인지 확인
 		leftDiagIdx := rowIdx + colIdx
 		rightDiagIdx := rowIdx - colIdx + (N - 1)
-		if col[rowIdx] || leftDiag[leftDiagIdx] || rightDiag[rightDiagIdx] {
+		if col[colIdx] || leftDiag[leftDiagIdx] || rightDiag[rightDiagIdx] {
 			continue
 		}
 
