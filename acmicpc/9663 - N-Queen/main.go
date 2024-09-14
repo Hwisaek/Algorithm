@@ -20,7 +20,7 @@ func scan() string {
 var (
 	N         = 0
 	answer    = 0
-	row       []bool
+	col       []bool
 	leftDiag  []bool
 	rightDiag []bool
 )
@@ -30,7 +30,7 @@ func main() {
 	s.Split(bufio.ScanWords)
 
 	N, _ = strconv.Atoi(scan())
-	row = make([]bool, N)
+	col = make([]bool, N)
 	leftDiag = make([]bool, N*2)
 	rightDiag = make([]bool, N*2)
 
@@ -48,27 +48,19 @@ func dive(rowIdx int) {
 	}
 
 	for colIdx := 0; colIdx < N; colIdx++ {
-		if row[rowIdx] {
-			continue
-		}
-
 		rightDiagIdx := rowIdx - colIdx + N
-		if rightDiag[rightDiagIdx] {
-			continue
-		}
-
 		leftDiagIdx := rowIdx + colIdx
-		if leftDiag[leftDiagIdx] {
+		if col[rowIdx] || rightDiag[rightDiagIdx] || leftDiag[leftDiagIdx] {
 			continue
 		}
 
-		row[rowIdx] = true
+		col[rowIdx] = true
 		rightDiag[rightDiagIdx] = true
 		leftDiag[leftDiagIdx] = true
 
 		dive(rowIdx + 1)
 
-		row[rowIdx] = false
+		col[rowIdx] = false
 		rightDiag[rightDiagIdx] = false
 		leftDiag[leftDiagIdx] = false
 	}
