@@ -18,8 +18,8 @@ func scan() string {
 }
 
 var (
-	N         = 0
-	answer    = 0
+	N         int
+	answer    int
 	col       []bool
 	leftDiag  []bool
 	rightDiag []bool
@@ -30,13 +30,11 @@ func main() {
 	s.Split(bufio.ScanWords)
 
 	N, _ = strconv.Atoi(scan())
-	col = make([]bool, N)         // 각 열에 퀸이 있는지 여부
-	leftDiag = make([]bool, 2*N)  // 왼쪽 위 대각선 (인덱스: row + col)
-	rightDiag = make([]bool, 2*N) // 오른쪽 위 대각선 (인덱스: row - col + N)
+	col = make([]bool, N)           // 각 열에 퀸이 있는지 여부
+	leftDiag = make([]bool, 2*N-1)  // 왼쪽 위 대각선 (인덱스: row + col)
+	rightDiag = make([]bool, 2*N-1) // 오른쪽 위 대각선 (인덱스: row - col + (N - 1))
 
-	for i := 0; i < N; i++ {
-		dive(0)
-	}
+	dive(0)
 
 	fmt.Fprint(w, answer)
 }
@@ -51,7 +49,7 @@ func dive(rowIdx int) {
 	for colIdx := 0; colIdx < N; colIdx++ {
 		// 현재 열과 대각선이 사용 중인지 확인
 		leftDiagIdx := rowIdx + colIdx
-		rightDiagIdx := rowIdx - colIdx + N
+		rightDiagIdx := rowIdx - colIdx + (N - 1)
 		if col[rowIdx] || leftDiag[leftDiagIdx] || rightDiag[rightDiagIdx] {
 			continue
 		}
