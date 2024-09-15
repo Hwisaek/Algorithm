@@ -18,18 +18,28 @@ func scan() string {
 }
 
 var (
-	board = make([][]int, 9)
+	board    = make([][]int, 9)
+	row, col = make([]int, 9), make([]int, 9)
+	box      = make([][]int, 3)
 )
 
 func main() {
 	defer w.Flush()
 	s.Split(bufio.ScanWords)
 
+	for i := 0; i < 3; i++ {
+		box[i] = make([]int, 3)
+	}
+
 	for i := 0; i < 9; i++ {
 		board[i] = make([]int, 9)
 		for j := 0; j < 9; j++ {
 			N, _ := strconv.Atoi(scan())
 			board[i][j] = N
+
+			row[i] = row[i] | 1<<N
+			col[j] = col[j] | 1<<N
+			box[i/3][j/3] = box[i/3][j/3] | 1<<N
 		}
 	}
 
@@ -48,21 +58,29 @@ func print() {
 }
 
 func dive() {
-	row, col, found := findEmptyCell()
+	rowIdx, colIdx, found := findEmptyCell()
 	if !found {
 		print()
 	}
 
 	for i := 1; i <= 9; i++ {
-		if check(row, col, i) {
-			board[row][col] = i
+		if check(rowIdx, colIdx, i) {
+			board[rowIdx][colIdx] = i
+			row[rowIdx] = row[rowIdx] | 1<<i
+			col[colIdx] = col[colIdx] | 1<<i
+			box[rowIdx/3][colIdx/3] = box[rowIdx/3][colIdx/3] | 1<<i
+
 			dive()
-			board[row][col] = 0
+
+			board[rowIdx][colIdx] = 0
+			row[rowIdx] = row[rowIdx] ^ 1<<i
+			col[colIdx] = col[colIdx] ^ 1<<i
+			box[rowIdx/3][colIdx/3] = box[rowIdx/3][colIdx/3] ^ 1<<i
 		}
 	}
 }
 
-func findEmptyCell() (row, col int, found bool) {
+func findEmptyCell() (rowIdx, colIdx int, found bool) {
 	for i := 0; i < 9; i++ {
 		for j := 0; j < 9; j++ {
 			if board[i][j] == 0 {
@@ -74,42 +92,19 @@ func findEmptyCell() (row, col int, found bool) {
 	return
 }
 
-func check(row, col, num int) (flag bool) {
-	var r, c, b int16
+func check(rowIdx, colIdx, num int) (flag bool) {
+	r := row[rowIdx]
+	c := col[colIdx]
+	b := box[rowIdx/3][colIdx/3]
 
-	for i := 0; i < 9; i++ {
-		if i == col {
-			continue
-		}
-		n := board[row][i]
-		r = r | 1<<n
-	}
 	if r&(1<<num) > 0 {
 		return
 	}
 
-	for i := 0; i < 9; i++ {
-		if i == row {
-			continue
-		}
-		n := board[i][col]
-		c = c | 1<<n
-	}
 	if c&(1<<num) > 0 {
 		return
 	}
 
-	startI := row / 3 * 3
-	startJ := col / 3 * 3
-	for i := startI; i < startI+3; i++ {
-		for j := startJ; j < startJ+3; j++ {
-			if i == col && j == row {
-				continue
-			}
-			n := board[i][j]
-			b = b | 1<<n
-		}
-	}
 	if b&(1<<num) > 0 {
 		return
 	}
