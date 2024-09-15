@@ -19,12 +19,9 @@ func scan() string {
 }
 
 var (
-	N      int           // 참가자 수
-	minVal = math.MaxInt // 격차의 최솟값
-	A      [][]int       // 시너지 배열
-	member []bool        // 각 멤버의 소속팀
-	aPower int           // a 팀의 power
-	count  int
+	N      int
+	minVal = math.MaxInt
+	A      [][]int
 )
 
 func main() {
@@ -42,60 +39,46 @@ func main() {
 		}
 	}
 
-	member = make([]bool, N)
-	member[0] = true
-	dive(1)
+	// 모든 조합을 비트마스크로 탐색합니다.
+	for mask := 0; mask < (1 << N); mask++ {
+		if popCount(mask) == N/2 {
+			aPower := 0
+			bPower := 0
+
+			// 팀 A의 파워 계산
+			for i := 0; i < N; i++ {
+				for j := i + 1; j < N; j++ {
+					if (mask&(1<<i) > 0) && (mask&(1<<j) > 0) {
+						aPower += A[i][j] + A[j][i]
+					}
+				}
+			}
+
+			// 팀 B의 파워 계산
+			for i := 0; i < N; i++ {
+				for j := i + 1; j < N; j++ {
+					if (mask&(1<<i) == 0) && (mask&(1<<j) == 0) {
+						bPower += A[i][j] + A[j][i]
+					}
+				}
+			}
+
+			// 최소 차이 계산
+			abs := aPower - bPower
+			abs = max(abs, -abs)
+			minVal = min(minVal, abs)
+		}
+	}
 
 	fmt.Fprintf(w, "%d", minVal)
-	fmt.Fprintf(w, "\n%d", count)
 }
 
-func dive(memberCount int) {
-	if minVal == 0 {
-		return
+// popCount는 비트마스크에서 1의 개수를 세는 함수입니다.
+func popCount(mask int) int {
+	count := 0
+	for mask > 0 {
+		count += mask & 1
+		mask >>= 1
 	}
-
-	if memberCount == N/2 {
-		bPower := teamBPower()
-		abs := aPower - bPower
-		abs = max(abs, -abs)
-		minVal = min(minVal, abs)
-
-		count++
-		return
-	}
-
-	for i := memberCount; i < N; i++ {
-		if member[i] {
-			continue
-		}
-
-		newAPower := 0
-		for j := 0; j < N; j++ {
-			if !member[j] {
-				continue
-			}
-			newAPower += A[i][j]
-			newAPower += A[j][i]
-		}
-
-		aPower += newAPower
-		member[i] = true
-
-		dive(memberCount + 1)
-
-		aPower -= newAPower
-		member[i] = false
-	}
-}
-
-func teamBPower() (power int) {
-	for i := 0; i < N; i++ {
-		for j := 0; j < N; j++ {
-			if i != j && !member[i] && !member[j] {
-				power += A[i][j]
-			}
-		}
-	}
-	return
+	return count
 }
