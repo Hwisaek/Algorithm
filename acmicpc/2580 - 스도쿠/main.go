@@ -28,9 +28,6 @@ func main() {
 	for i := 0; i < 9; i++ {
 		board[i] = make([]int, 9)
 		for j := 0; j < 9; j++ {
-			if board[i][j] != 0 {
-				continue
-			}
 			N, _ := strconv.Atoi(scan())
 			board[i][j] = N
 		}
@@ -65,7 +62,7 @@ func dive(i int) {
 			for k := 1; k < 10; k++ {
 				board[i][j] = k
 
-				if !(checkRow(i, j) && checkCol(i, j) && checkBox(i, j)) {
+				if !(checkRow(i) && checkCol(j) && checkBox(i, j)) {
 					continue
 				}
 
@@ -75,7 +72,7 @@ func dive(i int) {
 	}
 }
 
-func checkRow(i, j int) bool {
+func checkRow(i int) bool {
 	m := map[int]bool{}
 	for j := 0; j < 9; j++ {
 		n := board[i][j]
@@ -90,7 +87,7 @@ func checkRow(i, j int) bool {
 	return true
 }
 
-func checkCol(i, j int) bool {
+func checkCol(j int) bool {
 	m := map[int]bool{}
 	for i := 0; i < 9; i++ {
 		n := board[i][j]
@@ -110,7 +107,7 @@ func checkBox(i, j int) bool {
 
 	startI := i / 3 * 3
 	startJ := j / 3 * 3
-	for i := startJ; i < startI+i; i++ {
+	for i := startI; i < startI+3; i++ {
 		for j := startJ; j < startJ+3; j++ {
 			n := board[i][j]
 
