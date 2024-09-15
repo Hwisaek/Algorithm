@@ -33,8 +33,7 @@ func main() {
 		}
 	}
 
-	dive(0)
-
+	dive()
 }
 
 func print() {
@@ -48,74 +47,71 @@ func print() {
 	os.Exit(0)
 }
 
-func dive(i int) {
-	if i == 9 {
+func dive() {
+	row, col, found := findEmptyCell()
+	if !found {
 		print()
 	}
 
+	for i := 1; i <= 9; i++ {
+		if check(row, col, i) {
+			board[row][col] = i
+			dive()
+			board[row][col] = 0
+		}
+	}
+}
+
+func findEmptyCell() (row, col int, found bool) {
 	for i := 0; i < 9; i++ {
 		for j := 0; j < 9; j++ {
-			if board[i][j] != 0 {
-				continue
-			}
-
-			for k := 1; k < 10; k++ {
-				board[i][j] = k
-
-				if !(checkRow(i) && checkCol(j) && checkBox(i, j)) {
-					continue
-				}
-
-				dive(i + 1)
+			if board[i][j] == 0 {
+				return i, j, true
 			}
 		}
 	}
+
+	return
 }
 
-func checkRow(i int) bool {
-	m := map[int]bool{}
-	for j := 0; j < 9; j++ {
-		n := board[i][j]
+func check(row, col, num int) (flag bool) {
+	var r, c, b int16
 
-		if m[n] {
-			return false
-		}
-
-		m[n] = true
-	}
-
-	return true
-}
-
-func checkCol(j int) bool {
-	m := map[int]bool{}
 	for i := 0; i < 9; i++ {
-		n := board[i][j]
-
-		if m[n] {
-			return false
+		if i == col {
+			continue
 		}
-
-		m[n] = true
+		n := board[row][i]
+		r = r | 1<<n
+	}
+	if r&(1<<num) > 0 {
+		return
 	}
 
-	return true
-}
+	for i := 0; i < 9; i++ {
+		if i == row {
+			continue
+		}
+		n := board[i][col]
+		c = c | 1<<n
+	}
+	if c&(1<<num) > 0 {
+		return
+	}
 
-func checkBox(i, j int) bool {
-	m := map[int]bool{}
-
-	startI := i / 3 * 3
-	startJ := j / 3 * 3
+	startI := row / 3 * 3
+	startJ := col / 3 * 3
 	for i := startI; i < startI+3; i++ {
 		for j := startJ; j < startJ+3; j++ {
-			n := board[i][j]
-
-			if m[n] {
-				return false
+			if i == col && j == row {
+				continue
 			}
-			m[n] = true
+			n := board[i][j]
+			b = b | 1<<n
 		}
+	}
+	if b&(1<<num) > 0 {
+		return
 	}
 
 	return true
