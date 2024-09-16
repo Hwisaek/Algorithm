@@ -17,10 +17,6 @@ func scan() string {
 	return s.Text()
 }
 
-var (
-	F = make([]int, 101)
-)
-
 func main() {
 	defer w.Flush()
 	s.Split(bufio.ScanWords)
@@ -30,19 +26,12 @@ func main() {
 	for i := 0; i < T; i++ {
 		N, _ := strconv.Atoi(scan())
 
-		fmt.Fprintln(w, f(N))
-	}
-}
+		a, b, c := 1, 1, 1
 
-func f(n int) int {
-	switch n {
-	case 1, 2, 3:
-		return 1
-	}
+		for i := 4; i <= N; i++ {
+			a, b, c = b, c, a+b
+		}
 
-	if F[n] != 0 {
-		return F[n]
+		fmt.Fprintln(w, c)
 	}
-	F[n] = f(n-2) + f(n-3)
-	return F[n]
 }
