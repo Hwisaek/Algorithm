@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"slices"
 )
 
 var (
@@ -115,31 +114,22 @@ func main() {
 		D[i][2] = s[14]
 	}
 
-	var a, b, c, d int
-	a = check(A)
-	b = check(B)
-	c = check(C)
-	d = check(D)
-
-	fmt.Fprintf(w, "%d%d:%d%d", a, b, c, d)
+	fmt.Fprintf(w, "%d%d:%d%d", check(A), check(B), check(C), check(D))
 }
 
 func check(a [5][3]byte) int {
-	x := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-
-	for i := 0; i < 5; i++ {
-		for j := 0; j < 3; j++ {
-			for k := len(x) - 1; k >= 0; k-- {
-				c := x[k]
+	for c := 0; c < 10; c++ {
+		match := true
+		for i := 0; i < 5 && match; i++ {
+			for j := 0; j < 3 && match; j++ {
 				if a[i][j] == '#' && n[c][i][j] == '.' {
-					x = slices.Delete(x, k, k+1)
-				}
-				if len(x) == 1 {
-					return x[0]
+					match = false
 				}
 			}
 		}
+		if match {
+			return c
+		}
 	}
-
-	return x[0]
+	return -1
 }
