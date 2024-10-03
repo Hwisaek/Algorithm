@@ -36,11 +36,8 @@ func main() {
 
 		L := [][3]int{
 			{A, B, C},
-			{A, C, B},
-			{B, A, C},
-			{B, C, A},
-			{C, A, B},
 			{C, B, A},
+			{C, A, B},
 		}
 
 		result := func() (r string) {
@@ -68,17 +65,3 @@ func main() {
 		fmt.Fprintln(w, result)
 	}
 }
-
-/*
-22 11 26
-1
-99 99 99
-invalid
-
-22 11 26
-1
-22 12 31
-safe
-
-
-*/
