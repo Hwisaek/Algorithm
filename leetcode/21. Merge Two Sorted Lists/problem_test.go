@@ -1,4 +1,4 @@
-package _1
+package problem
 
 type ListNode struct {
 	Val  int
@@ -6,6 +6,8 @@ type ListNode struct {
 }
 
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) (result *ListNode) {
+	dummy := &ListNode{}
+	current := dummy
 
 	return
 }
