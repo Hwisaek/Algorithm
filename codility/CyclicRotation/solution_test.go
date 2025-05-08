@@ -6,12 +6,23 @@ import (
 )
 
 func Solution(A []int, K int) (answer []int) {
+	answer = make([]int, 0, len(A))
+
+	if len(A) == 0 {
+		return
+	}
+
 	l := len(A)
+	K = K % l
 	for i := 0; i < l; i++ {
-		index := i - K + 1000
+		index := i - K
+		if index < 0 {
+			index += l * ((-index / l) + 1)
+		}
 		index = index % l
 		answer = append(answer, A[index])
 	}
+
 	return
 }
 
