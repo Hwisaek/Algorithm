@@ -6,7 +6,7 @@ func Solution(A []int) (answer int) {
 		rSum += A[i]
 	}
 
-	diff := rSum - lSum
+	diff := abs(rSum - lSum)
 	for i := 1; i < len(A)-1; i++ {
 		lSum += A[i]
 		rSum -= A[i]
