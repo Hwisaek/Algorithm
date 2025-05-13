@@ -3,15 +3,17 @@ package solution
 import "testing"
 
 func Solution(A []int) int {
-	MAX := 0
+	length := len(A)
 
 	m := make(map[int]struct{})
 	for _, e := range A {
-		MAX = max(MAX, e)
 		m[e] = struct{}{}
+		if e > length {
+			return 0
+		}
 	}
 
-	if MAX == len(m) {
+	if length == len(m) {
 		return 1
 	}
 
